@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xml-fragment xmlns:ser="http://www.bea.com/wli/sb/services" xmlns:tran="http://www.bea.com/wli/sb/transports" xmlns:env="http://www.bea.com/wli/config/env" xmlns:http="http://www.bea.com/wli/sb/transports/http" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://www.bea.com/wli/sb/stages/config" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con2="http://www.bea.com/wli/sb/pipeline/config">
   <ser:coreEntry isProxy="true" isEnabled="true">
+    <ser:description/>
     <ser:binding type="SOAP" isSoap12="false" xsi:type="con1:SoapBindingType" xmlns:con1="http://www.bea.com/wli/sb/services/bindings/config">
       <con1:wsdl ref="DSCL_InformaCambiosNovios-PE_INT2000/Resources/WSDL/InformaCambiosNovios"/>
       <con1:port>
@@ -210,7 +211,104 @@
         </con:actions>
       </con:stage>
     </con:pipeline>
-    <con2:pipeline type="error" name="_onErrorHandler-6046281650881722541--588077ef.1489e836a0c.-7d02"/>
+    <con2:pipeline type="error" name="_onErrorHandler-6046281650881722541--588077ef.1489e836a0c.-7d02">
+      <con2:stage name="Handle Error">
+        <con2:context xmlns:con5="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con4="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con6="http://www.bea.com/wli/sb/stages/routing/config" xmlns:jms="http://www.bea.com/wli/sb/transports/jms" xmlns:con3="http://www.bea.com/wli/sb/stages/config">
+          <con3:userNsDecl namespace="http://xmlns.cencosud.corp/Core/EBM/Common/EBM" prefix="ebm"/>
+          <con3:userNsDecl namespace="http://xmlns.cencosud.corp/Common/Logging" prefix="ns0"/>
+        </con2:context>
+        <con2:actions xmlns:con5="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con4="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con6="http://www.bea.com/wli/sb/stages/routing/config" xmlns:jms="http://www.bea.com/wli/sb/transports/jms" xmlns:con3="http://www.bea.com/wli/sb/stages/config">
+          <con7:log xmlns:con7="http://www.bea.com/wli/sb/stages/logging/config">
+            <con3:id>_ActionId-6659140192730478368-24cd095c.148a2bbea38.-77b0</con3:id>
+            <con7:logLevel>error</con7:logLevel>
+            <con7:expr>
+              <con3:xqueryText>$fault</con3:xqueryText>
+            </con7:expr>
+            <con7:message/>
+          </con7:log>
+          <con1:assign varName="errorMessage">
+            <con3:id>_ActionId-6659140192730478368-24cd095c.148a2bbea38.-77af</con3:id>
+            <con1:expr>
+              <con3:xqueryTransform>
+                <con3:resource ref="Common/ErrorHandling/Resources/XQuery/ErrorHospital"/>
+                <con3:param name="eBMHeader1">
+                  <con3:path>$ebmHeader</con3:path>
+                </con3:param>
+                <con3:param name="fault">
+                  <con3:path>$faut</con3:path>
+                </con3:param>
+                <con3:param name="errorHospitalContext1">
+                  <con3:path>$context</con3:path>
+                </con3:param>
+              </con3:xqueryTransform>
+            </con1:expr>
+          </con1:assign>
+          <con1:assign varName="errorCode">
+            <con3:id>_ActionId-6659140192730478368-24cd095c.148a2bbea38.-77ae</con3:id>
+            <con1:expr>
+              <con3:xqueryText>data($fault/ctx:errorCode)</con3:xqueryText>
+            </con1:expr>
+          </con1:assign>
+          <con1:wsCallout>
+            <con3:id>_ActionId-6659140192730478368-24cd095c.148a2bbea38.-77ad</con3:id>
+            <con1:service xsi:type="ref:ProxyRef" ref="Common/ErrorHandling/Proxy Services/ErrorFormatterPS" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+            <con1:request>
+              <con1:payload>$errorRequest</con1:payload>
+            </con1:request>
+            <con1:response>
+              <con1:payload>errorResponse</con1:payload>
+            </con1:response>
+            <con1:requestTransform/>
+            <con1:responseTransform/>
+          </con1:wsCallout>
+          <con4:route>
+            <con3:id>_ActionId-6659140192730478368-24cd095c.148a2bbea38.-77ac</con3:id>
+            <con4:service ref="Common/Logging/Proxy Services/LogIntoBAM" xsi:type="ref:ProxyRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+            <con4:outboundTransform>
+              <con1:replace varName="body" contents-only="true">
+                <con3:id>_ActionId-6659140192730478368-24cd095c.148a2bbea38.-77ab</con3:id>
+                <con1:location>
+                  <con3:xpathText>.</con3:xpathText>
+                </con1:location>
+                <con1:expr>
+                  <con3:xqueryText>$bamLog</con3:xqueryText>
+                </con1:expr>
+              </con1:replace>
+              <con1:replace varName="body" contents-only="true">
+                <con3:id>_ActionId-6659140192730478368-24cd095c.148a2bbea38.-77aa</con3:id>
+                <con1:location>
+                  <con3:xpathText>./ns0:CencosudGlobalBAMLog/ns0:errorDescription</con3:xpathText>
+                </con1:location>
+                <con1:expr>
+                  <con3:xqueryText>data($errorResponse/ebm:ReturnMessage)</con3:xqueryText>
+                </con1:expr>
+              </con1:replace>
+              <con1:replace varName="body" contents-only="true">
+                <con3:id>_ActionId-6659140192730478368-24cd095c.148a2bbea38.-77a9</con3:id>
+                <con1:location>
+                  <con3:xpathText>./ns0:CencosudGlobalBAMLog/ns0:errorCode</con3:xpathText>
+                </con1:location>
+                <con1:expr>
+                  <con3:xqueryText>data($errorResponse/ebm:ErrorCode)</con3:xqueryText>
+                </con1:expr>
+              </con1:replace>
+              <con1:replace varName="body" contents-only="true">
+                <con3:id>_ActionId-6659140192730478368-24cd095c.148a2bbea38.-77a8</con3:id>
+                <con1:location>
+                  <con3:xpathText>./ns0:CencosudGlobalBAMLog/ns0:transactionStatus</con3:xpathText>
+                </con1:location>
+                <con1:expr>
+                  <con3:xqueryText>'ERROR'</con3:xqueryText>
+                </con1:expr>
+              </con1:replace>
+            </con4:outboundTransform>
+          </con4:route>
+          <con3:reply>
+            <con3:id>_ActionId-6659140192730478368-24cd095c.148a2bbea38.-77a7</con3:id>
+          </con3:reply>
+        </con2:actions>
+      </con2:stage>
+    </con2:pipeline>
     <con:flow xmlns:con="http://www.bea.com/wli/sb/pipeline/config">
       <con:pipeline-node name="PipelinePairNode1">
         <con:request>PipelinePairNode1_request</con:request>

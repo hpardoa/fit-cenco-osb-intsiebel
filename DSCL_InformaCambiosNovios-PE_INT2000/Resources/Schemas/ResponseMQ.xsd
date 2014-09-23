@@ -2,7 +2,7 @@
   <xs:element name="SendInformaCambiosNovios">
     <xs:complexType>
       <xs:sequence>
-        <xs:element type="xs:int" name="SRNumber"/>
+        <xs:element type="xs:int" name="Novioscode"/>
         <xs:element type="xs:string" name="ErrorCode"/>
         <xs:element type="xs:string" name="ErrorMessage"/>
       </xs:sequence>

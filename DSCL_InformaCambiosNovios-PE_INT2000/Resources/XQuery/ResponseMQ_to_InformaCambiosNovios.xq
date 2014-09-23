@@ -9,7 +9,7 @@ declare function xf:ResponseMQ_to_InformaCambiosNovios($sendInformaCambiosNovios
     as element(ns1:InformaCambiosNovioResponse) {
         <ns1:InformaCambiosNovioResponse>
             <ns0:respInformaCambiosNovios>
-                <ns0:Novioscode>{ data($sendInformaCambiosNovios1/SRNumber) }</ns0:Novioscode>
+                <ns0:Novioscode>{ data($sendInformaCambiosNovios1/Novioscode) }</ns0:Novioscode>
                 <ns0:ErrorCode>{ data($sendInformaCambiosNovios1/ErrorCode) }</ns0:ErrorCode>
                 <ns0:ErrorMessage>{ data($sendInformaCambiosNovios1/ErrorMessage) }</ns0:ErrorMessage>
             </ns0:respInformaCambiosNovios>
