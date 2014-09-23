@@ -1,0 +1,15 @@
+<xsd:schema elementFormDefault="qualified"
+xmlns="http://xmlns.cencosud.corp/InformaCambiosNoviosResponse"
+targetNamespace="http://xmlns.cencosud.corp/InformaCambiosNoviosResponse"
+xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+<xsd:element name="respInformaCambiosNovios" type="InformaCambiosNoviosCaseResponseType"/>
+
+	<xsd:complexType name="InformaCambiosNoviosCaseResponseType">
+		<xsd:sequence>
+			<xsd:element name="Novioscode" type="xsd:integer" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="ErrorCode" type="xsd:string" minOccurs="1" maxOccurs="1" />
+			<xsd:element name="ErrorMessage" type="xsd:string" minOccurs="1" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

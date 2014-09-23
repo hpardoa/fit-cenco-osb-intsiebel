@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml-fragment xmlns:ser="http://www.bea.com/wli/sb/services" xmlns:tran="http://www.bea.com/wli/sb/transports" xmlns:env="http://www.bea.com/wli/config/env" xmlns:http="http://www.bea.com/wli/sb/transports/http" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://www.bea.com/wli/sb/stages/config" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con2="http://www.bea.com/wli/sb/pipeline/config">
+  <ser:coreEntry isProxy="true" isEnabled="true">
+    <ser:binding type="SOAP" isSoap12="false" xsi:type="con1:SoapBindingType" xmlns:con1="http://www.bea.com/wli/sb/services/bindings/config">
+      <con1:wsdl ref="DSCL_InformaCambiosNovios-PE_INT2000/Resources/WSDL/InformaCambiosNovios"/>
+      <con1:port>
+        <con1:name>InformaCambiosNoviosSOAP</con1:name>
+        <con1:namespace>http://xmlns.cencosud.corp/CENCOSUD/Siebel/SDV/Resources/WSDL/SDV/InformaCambiosNov/</con1:namespace>
+      </con1:port>
+      <con1:selector type="SOAP body"/>
+    </ser:binding>
+    <ser:monitoring isEnabled="false">
+      <ser:aggregationInterval>10</ser:aggregationInterval>
+      <ser:pipelineMonitoringLevel>Pipeline</ser:pipelineMonitoringLevel>
+    </ser:monitoring>
+    <ser:reporting>true</ser:reporting>
+    <ser:logging isEnabled="true">
+      <ser:logLevel>debug</ser:logLevel>
+    </ser:logging>
+    <ser:sla-alerting isEnabled="true">
+      <ser:alertLevel>normal</ser:alertLevel>
+    </ser:sla-alerting>
+    <ser:pipeline-alerting isEnabled="true">
+      <ser:alertLevel>normal</ser:alertLevel>
+    </ser:pipeline-alerting>
+    <ser:ws-policy>
+      <ser:binding-mode>wsdl-policy-attachments</ser:binding-mode>
+    </ser:ws-policy>
+  </ser:coreEntry>
+  <ser:endpointConfig>
+    <tran:provider-id>http</tran:provider-id>
+    <tran:inbound>true</tran:inbound>
+    <tran:URI>
+      <env:value>/DSCL_InformaCambiosNovios-PE_INT2000/Proxy_Services/InformaCambiosNovios</env:value>
+    </tran:URI>
+    <tran:inbound-properties/>
+    <tran:all-headers>false</tran:all-headers>
+    <tran:provider-specific>
+      <http:inbound-properties/>
+    </tran:provider-specific>
+  </ser:endpointConfig>
+  <ser:router errorHandler="_onErrorHandler-6046281650881722541--588077ef.1489e836a0c.-7d02">
+    <con:pipeline type="request" name="PipelinePairNode1_request" xmlns:con="http://www.bea.com/wli/sb/pipeline/config">
+      <con:stage name="Initialize Variables">
+        <con:context>
+          <con1:varNsDecl namespace="http://xmlns.cencosud.corp/CENCOSUD/Siebel/SDV/Resources/WSDL/SDV/ConsultaTransVentas/" prefix="con" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+          <con1:varNsDecl namespace="http://xmlns.cencosud.corp/ConsultaTransaccionVentaRequest" prefix="con1" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+          <con1:varNsDecl namespace="http://xmlns.cencosud.corp/Core/EBM/Common/EBM" prefix="ebm" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+        </con:context>
+        <con:actions>
+          <con1:assign varName="intCode">
+            <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-4303860517649433314--5552a845.1486b1c3cdb.-7f41</con2:id>
+            <con1:expr>
+              <con3:xqueryText xmlns:con3="http://www.bea.com/wli/sb/stages/config">'INT2000'</con3:xqueryText>
+            </con1:expr>
+          </con1:assign>
+          <con1:assign varName="correlationId">
+            <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-4303860517649433314--5552a845.1486b1c3cdb.-7f2e</con2:id>
+            <con1:expr>
+              <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">'1'</con2:xqueryText>
+            </con1:expr>
+          </con1:assign>
+          <con1:assign varName="ebmHeader">
+            <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-4303860517649433314--5552a845.1486b1c3cdb.-7f30</con2:id>
+            <con1:expr>
+              <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$body/con1:reqConsultaTransaccionVenta/con:EBM/ebm:EBMHeader</con2:xqueryText>
+            </con1:expr>
+          </con1:assign>
+          <con1:assign varName="serviceName">
+            <con3:id xmlns:con3="http://www.bea.com/wli/sb/stages/config">_ActionId-6046281650881722541--588077ef.1489e836a0c.-7f33</con3:id>
+            <con1:expr>
+              <con3:xqueryText xmlns:con3="http://www.bea.com/wli/sb/stages/config">'InformaCambiosNovios'</con3:xqueryText>
+            </con1:expr>
+          </con1:assign>
+          <con4:assign varName="context" xmlns:con3="http://www.bea.com/wli/sb/stages/config" xmlns:con="http://www.bea.com/wli/sb/typesystem/config" xmlns:con2="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con1="http://www.bea.com/wli/sb/pipeline/config" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config">
+            <con3:id>_ActionId-6046281650881722541--588077ef.1489e836a0c.-7f0b</con3:id>
+            <con4:expr>
+              <con3:xqueryTransform>
+                <con3:resource ref="Common/ErrorHandling/Resources/XQuery/ErrorHospitalContext"/>
+                <con3:param name="applicationName">
+                  <con3:path>if(fn:exists($ebmHeader/ebm:Sender/ebm:Application)) then $ebmHeader/ebm:Sender/ebm:Application/text() else ''</con3:path>
+                </con3:param>
+                <con3:param name="payload">
+                  <con3:path>$body/*</con3:path>
+                </con3:param>
+                <con3:param name="operation">
+                  <con3:path>$serviceName</con3:path>
+                </con3:param>
+                <con3:param name="integrationCode">
+                  <con3:path>$intCode</con3:path>
+                </con3:param>
+              </con3:xqueryTransform>
+            </con4:expr>
+          </con4:assign>
+        </con:actions>
+      </con:stage>
+      <con:stage name="LogIntoBAM1">
+        <con1:context xmlns:con5="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con4="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con6="http://www.bea.com/wli/sb/stages/routing/config" xmlns:jms="http://www.bea.com/wli/sb/transports/jms" xmlns:con3="http://www.bea.com/wli/sb/stages/config" xmlns:con2="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con1="http://www.bea.com/wli/sb/pipeline/config"/>
+        <con1:actions xmlns:con5="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con4="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con6="http://www.bea.com/wli/sb/stages/routing/config" xmlns:jms="http://www.bea.com/wli/sb/transports/jms" xmlns:con3="http://www.bea.com/wli/sb/stages/config" xmlns:con2="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con1="http://www.bea.com/wli/sb/pipeline/config">
+          <con3:skip>
+            <con3:id>_ActionId-6046281650881722541--588077ef.1489e836a0c.-7ec2</con3:id>
+          </con3:skip>
+          <con4:route>
+            <con3:id>_ActionId-6046281650881722541--588077ef.1489e836a0c.-7ec1</con3:id>
+            <con4:service ref="Common/Logging/Proxy Services/LogIntoBAM" xsi:type="ref:ProxyRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+            <con4:outboundTransform>
+              <con7:replace varName="body" contents-only="true" xmlns:con7="http://www.bea.com/wli/sb/stages/transform/config">
+                <con3:id>_ActionId-6046281650881722541--588077ef.1489e836a0c.-7ec0</con3:id>
+                <con7:location>
+                  <con3:xpathText>.</con3:xpathText>
+                </con7:location>
+                <con7:expr>
+                  <con3:xqueryText>$bamLog</con3:xqueryText>
+                </con7:expr>
+              </con7:replace>
+            </con4:outboundTransform>
+          </con4:route>
+        </con1:actions>
+      </con:stage>
+      <con:stage name="XML Transform">
+        <con1:context xmlns:con5="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con4="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con6="http://www.bea.com/wli/sb/stages/routing/config" xmlns:jms="http://www.bea.com/wli/sb/transports/jms" xmlns:con3="http://www.bea.com/wli/sb/stages/config" xmlns:con2="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con1="http://www.bea.com/wli/sb/pipeline/config">
+          <con3:varNsDecl namespace="http://www.example.org/PurchaseOrderInputMessageEBM" prefix="pur"/>
+          <con3:varNsDecl namespace="http://www.example.org/PurchaseOrderInputMessage" prefix="pur1"/>
+          <con3:varNsDecl namespace="http://www.example.org/PurchaseOrderStatusInputMessageEBM" prefix="pur2"/>
+          <con3:varNsDecl namespace="http://xmlns.cencosud.corp/ConsultaTransaccionVentaResponse" prefix="con"/>
+          <con3:varNsDecl namespace="http://xmlns.cencosud.corp/ConsultaTransaccionVentaRequest" prefix="con1"/>
+          <con3:varNsDecl namespace="http://xmlns.cencosud.corp/ConsultaTransaccionVenta/" prefix="con2"/>
+          <con3:varNsDecl namespace="http://xmlns.cencosud.corp/CENCOSUD/Siebel/SDV/Resources/WSDL/SDV/ConsultaTransVentas/" prefix="con3"/>
+          <con3:varNsDecl namespace="http://xmlns.cencosud.corp/CENCOSUD/Siebel/SDV/Resources/WSDL/SDV/InformaCambiosNov/" prefix="inf"/>
+          <con3:varNsDecl namespace="http://xmlns.cencosud.corp/InformaCambiosNoviosRequest" prefix="inf1"/>
+        </con1:context>
+        <con1:actions xmlns:con5="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con4="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con6="http://www.bea.com/wli/sb/stages/routing/config" xmlns:jms="http://www.bea.com/wli/sb/transports/jms" xmlns:con3="http://www.bea.com/wli/sb/stages/config" xmlns:con2="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con1="http://www.bea.com/wli/sb/pipeline/config">
+          <con7:assign varName="BusReq" xmlns:con7="http://www.bea.com/wli/sb/stages/transform/config">
+            <con3:id>_ActionId-6046281650881722541--588077ef.1489e836a0c.-7e4b</con3:id>
+            <con7:expr>
+              <con3:xqueryTransform>
+                <con3:resource ref="DSCL_InformaCambiosNovios-PE_INT2000/Resources/XQuery/InformaCambiosNovios_to_SendInformaCambiosNovios"/>
+                <con3:param name="reqInformaCambiosNovios1">
+                  <con3:path>$body/inf:InformaCambiosNovio/inf1:reqInformaCambiosNovios</con3:path>
+                </con3:param>
+              </con3:xqueryTransform>
+            </con7:expr>
+          </con7:assign>
+          <con5:log>
+            <con3:id>_ActionId-6046281650881722541--588077ef.1489e836a0c.-7e4a</con3:id>
+            <con5:logLevel>info</con5:logLevel>
+            <con5:expr>
+              <con3:xqueryText>$body</con3:xqueryText>
+            </con5:expr>
+            <con5:message/>
+          </con5:log>
+        </con1:actions>
+      </con:stage>
+      <con:stage name="RouteBs1">
+        <con1:context xmlns:con3="http://www.bea.com/wli/sb/stages/config" xmlns:con2="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con1="http://www.bea.com/wli/sb/pipeline/config"/>
+        <con1:actions xmlns:con3="http://www.bea.com/wli/sb/stages/config" xmlns:con2="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con1="http://www.bea.com/wli/sb/pipeline/config">
+          <con4:wsCallout xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config">
+            <con3:id>_ActionId-6046281650881722541--588077ef.1489e836a0c.-7dd4</con3:id>
+            <con4:service xsi:type="ref:BusinessServiceRef" ref="DSCL_InformaCambiosNovios-PE_INT2000/Business Services/SendInformaCambiosNovios" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+            <con4:request>
+              <con4:payload>$BusReq</con4:payload>
+            </con4:request>
+            <con4:response>
+              <con4:payload>respBusiness</con4:payload>
+            </con4:response>
+            <con4:requestTransform>
+              <con7:transport-headers copy-all="true" xmlns:con5="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con4="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con6="http://www.bea.com/wli/sb/stages/routing/config" xmlns:jms="http://www.bea.com/wli/sb/transports/jms" xmlns:con7="http://www.bea.com/wli/sb/stages/transform/config">
+                <con3:id>_ActionId-6046281650881722541--588077ef.1489e836a0c.-7dd5</con3:id>
+                <con7:header-set>outbound-request</con7:header-set>
+                <con7:header value="expression" name="Format">
+                  <con3:xqueryText>'MQSTR'</con3:xqueryText>
+                </con7:header>
+              </con7:transport-headers>
+            </con4:requestTransform>
+            <con4:responseTransform/>
+          </con4:wsCallout>
+        </con1:actions>
+      </con:stage>
+    </con:pipeline>
+    <con:pipeline type="response" name="PipelinePairNode1_response" xmlns:con="http://www.bea.com/wli/sb/pipeline/config">
+      <con:stage name="stage1">
+        <con:context/>
+        <con:actions>
+          <con1:mflTransform>
+            <con3:id xmlns:con3="http://www.bea.com/wli/sb/stages/config">_ActionId-6046281650881722541--588077ef.1489e836a0c.-7c46</con3:id>
+            <con1:type>nonXML-To-XML</con1:type>
+            <con1:sourceExpr>
+              <con3:xqueryText xmlns:con3="http://www.bea.com/wli/sb/stages/config">$respBusiness</con3:xqueryText>
+            </con1:sourceExpr>
+            <con1:mfl-resource ref="DSCL_InformaCambiosNovios-PE_INT2000/Resources/MFL/SendInformaCambiosNovios"/>
+            <con1:assign-variable>respMFL</con1:assign-variable>
+          </con1:mflTransform>
+          <con1:assign varName="respPX">
+            <con3:id xmlns:con3="http://www.bea.com/wli/sb/stages/config">_ActionId-6046281650881722541--588077ef.1489e836a0c.-7c0c</con3:id>
+            <con1:expr>
+              <con3:xqueryTransform xmlns:con3="http://www.bea.com/wli/sb/stages/config">
+                <con3:resource ref="DSCL_InformaCambiosNovios-PE_INT2000/Resources/XQuery/ResponseMQ_to_InformaCambiosNovios"/>
+                <con3:param name="sendInformaCambiosNovios1">
+                  <con3:path>$respMFL</con3:path>
+                </con3:param>
+              </con3:xqueryTransform>
+            </con1:expr>
+          </con1:assign>
+          <con1:replace contents-only="true" varName="body">
+            <con3:id xmlns:con3="http://www.bea.com/wli/sb/stages/config">_ActionId-6046281650881722541--588077ef.1489e836a0c.-7bd2</con3:id>
+            <con1:expr>
+              <con3:xqueryText xmlns:con3="http://www.bea.com/wli/sb/stages/config">$respPX</con3:xqueryText>
+            </con1:expr>
+          </con1:replace>
+        </con:actions>
+      </con:stage>
+    </con:pipeline>
+    <con2:pipeline type="error" name="_onErrorHandler-6046281650881722541--588077ef.1489e836a0c.-7d02"/>
+    <con:flow xmlns:con="http://www.bea.com/wli/sb/pipeline/config">
+      <con:pipeline-node name="PipelinePairNode1">
+        <con:request>PipelinePairNode1_request</con:request>
+        <con:response>PipelinePairNode1_response</con:response>
+      </con:pipeline-node>
+    </con:flow>
+  </ser:router>
+</xml-fragment>

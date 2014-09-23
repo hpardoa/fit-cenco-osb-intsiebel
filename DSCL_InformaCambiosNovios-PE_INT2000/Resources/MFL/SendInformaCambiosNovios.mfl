@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<!DOCTYPE MessageFormat SYSTEM 'mfl.dtd'>
+<!--    Enter description of the message format here.    -->
+<MessageFormat name='SendInformaCambiosNovios' version='2.02'>
+    <FieldFormat name='SRNumber' type='String' delimOptional='y' length='64' strlenInChars='y' codepage='UTF-8'/>
+    <FieldFormat name='ErrorCode' type='String' delimOptional='y' length='100' strlenInChars='y' codepage='UTF-8'/>
+    <FieldFormat name='ErrorMessage' type='String' delimOptional='y' length='2000' strlenInChars='y' codepage='UTF-8'/>
+</MessageFormat>

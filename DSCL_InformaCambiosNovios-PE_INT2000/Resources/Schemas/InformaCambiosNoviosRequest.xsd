@@ -1,0 +1,69 @@
+<xsd:schema targetNamespace="http://xmlns.cencosud.corp/InformaCambiosNoviosRequest" 
+xmlns:commonebm="http://xmlns.cencosud.corp/Core/EBM/Common/EBM" 
+xmlns="http://xmlns.cencosud.corp/InformaCambiosNoviosRequest" 
+xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+	<xsd:import namespace="http://xmlns.cencosud.corp/Core/EBM/Common/EBM" schemaLocation="../../../CommonCore/EBM/Common/EBMV2.xsd"/>
+
+	<xsd:element name="reqInformaCambiosNovios" type="InformaCambiosNoviosType"/>
+
+	<xsd:complexType name="InformaCambiosNoviosType">
+		<xsd:sequence>
+			<xsd:element name="EBM" type="commonebm:EBMType"/>
+			<xsd:element name="InformaCambiosNoviosCase" type="InformaCambiosNoviosCaseRequestType" minOccurs="1" maxOccurs="1"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="InformaCambiosNoviosCaseRequestType">
+		<xsd:sequence>
+			<xsd:element name="CNTypeOperation" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="SRNumber" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="CNTypeList" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="CNNoviosCode" type="xsd:integer" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="CNEvent_Type" type="xsd:integer" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="CNEvenDate" type="xsd:date" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="CNStoreId" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="CNGiftRegion" type="xsd:integer" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="CNGiftCommune" type="xsd:integer" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="CNGiftAddress" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="InformaCambiosNoviosClient1" type="InformaCambiosNoviosClient1RequestType" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="InformaCambiosNoviosClient2" type="InformaCambiosNoviosClient2RequestType" minOccurs="1" maxOccurs="1"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="InformaCambiosNoviosClient1RequestType">
+		<xsd:sequence>
+			<xsd:element name="LastName" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="MotherMaidenName" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="FirstName" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="DateofBirth" type="xsd:date" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="CNDocumentId" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="CNVerificationDigit" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="Region" type="xsd:integer" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="CNCommune" type="xsd:integer" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Address" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Phone" type="xsd:integer" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="CellularPhone" type="xsd:integer" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="EmailAddress" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="CNCencosudCard" type="xsd:integer" minOccurs="0" maxOccurs="1"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="InformaCambiosNoviosClient2RequestType">
+		<xsd:sequence>
+			<xsd:element name="CNSPLastName" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="CNSPMotherMaidenName" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="CNSPFirstName" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="CNSPDateofBirth" type="xsd:date" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="CNSPDocumentId" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="CNVerificationDigit" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="CNSPRegion" type="xsd:integer" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="CNSPCommune" type="xsd:integer" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="CNSPAddress" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="CNSPPhone" type="xsd:integer" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="CNSPCellularPhone" type="xsd:integer" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="CNSPEmailAdd" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="CNSPCencosudCard" type="xsd:integer" minOccurs="0" maxOccurs="1"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

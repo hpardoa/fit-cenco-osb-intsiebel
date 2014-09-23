@@ -1,0 +1,53 @@
+<wsdl:definitions name="InformaCambiosNovios" targetNamespace="http://xmlns.cencosud.corp/CENCOSUD/Siebel/SDV/Resources/WSDL/SDV/InformaCambiosNov/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://xmlns.cencosud.corp/CENCOSUD/Siebel/SDV/Resources/WSDL/SDV/InformaCambiosNov/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:conr="http://xmlns.cencosud.corp/InformaCambiosNoviosRequest" xmlns:conrq="http://xmlns.cencosud.corp/InformaCambiosNoviosResponse">
+
+    <wsdl:import namespace="http://xmlns.cencosud.corp/InformaCambiosNoviosResponse" location="../Schemas/InformaCambiosNoviosResponse.xsd"/>
+    <wsdl:import namespace="http://xmlns.cencosud.corp/InformaCambiosNoviosRequest" location="../Schemas/InformaCambiosNoviosRequest.xsd"/>
+    
+    <wsdl:types>
+    <xsd:schema targetNamespace="http://xmlns.cencosud.corp/CENCOSUD/Siebel/SDV/Resources/WSDL/SDV/InformaCambiosNov/">
+      <xsd:element name="InformaCambiosNovio">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="conr:reqInformaCambiosNovios"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="InformaCambiosNovioResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="conrq:respInformaCambiosNovios"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="InformaCambiosNovioRequest">
+    <wsdl:part element="tns:InformaCambiosNovio" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="InformaCambiosNovioResponse">
+    <wsdl:part element="tns:InformaCambiosNovioResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:portType name="InformaCambiosNovios">
+    <wsdl:operation name="InformaCambiosNovio">
+      <wsdl:input message="tns:InformaCambiosNovioRequest"/>
+      <wsdl:output message="tns:InformaCambiosNovioResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="InformaCambiosNoviosSOAP" type="tns:InformaCambiosNovios">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="InformaCambiosNovio">
+      <soap:operation soapAction="http://xmlns.cencosud.corp/InformaCambiosNovios/InformaCambiosNovio"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="InformaCambiosNovios">
+    <wsdl:port binding="tns:InformaCambiosNoviosSOAP" name="InformaCambiosNoviosSOAP">
+      <soap:address location="http://xmlns.cencosud.corp/CENCOSUD/Siebel/SDV/Resources/WSDL/SDV/InformaCambiosNov/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
