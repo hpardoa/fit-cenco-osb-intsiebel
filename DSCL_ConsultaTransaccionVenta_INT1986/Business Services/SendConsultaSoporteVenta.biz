@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml-fragment xmlns:ser="http://www.bea.com/wli/sb/services" xmlns:tran="http://www.bea.com/wli/sb/transports" xmlns:http="http://www.bea.com/wli/sb/transports/http" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:env="http://www.bea.com/wli/config/env" xmlns:mq="http://www.bea.com/wli/sb/transports/mq">
+  <ser:coreEntry isProxy="false" isEnabled="true" isTracingEnabled="false" isAutoPublish="false">
+    <ser:description/>
+    <ser:binding type="Mixed" xsi:type="con:MixedBindingType" xmlns:con="http://www.bea.com/wli/sb/services/bindings/config">
+      <con:request type="Text"/>
+      <con:response type="Text"/>
+    </ser:binding>
+    <ser:monitoring isEnabled="false">
+      <ser:aggregationInterval>10</ser:aggregationInterval>
+    </ser:monitoring>
+    <ser:sla-alerting isEnabled="true">
+      <ser:alertLevel>normal</ser:alertLevel>
+    </ser:sla-alerting>
+    <ser:throttling enabled="false">
+      <ser:capacity>0</ser:capacity>
+      <ser:maxQueueLength>0</ser:maxQueueLength>
+      <ser:timeToLive>0</ser:timeToLive>
+    </ser:throttling>
+    <ser:result-caching isSupported="false" isEnabled="true"/>
+  </ser:coreEntry>
+  <ser:endpointConfig>
+    <tran:provider-id>mq</tran:provider-id>
+    <tran:inbound>false</tran:inbound>
+    <tran:URI>
+      <env:value>mq://QL_OSB_SV_1986_REQ?conn=DSCL_ConsultaTransaccionVenta_INT1986/Resources/MQConfigurations/QM_SVREQ</env:value>
+    </tran:URI>
+    <tran:outbound-properties>
+      <tran:load-balancing-algorithm>round-robin</tran:load-balancing-algorithm>
+      <tran:retry-count>0</tran:retry-count>
+      <tran:retry-interval>30</tran:retry-interval>
+      <tran:delay-interval-configuration isEnabled="false">
+        <tran:delay-interval>0</tran:delay-interval>
+      </tran:delay-interval-configuration>
+    </tran:outbound-properties>
+    <tran:provider-specific xsi:type="mq:MQEndPointConfiguration">
+      <mq:outbound-properties>
+        <mq:message-type>Text</mq:message-type>
+        <mq:response-required>true</mq:response-required>
+        <mq:auto-gen-correlation-value>true</mq:auto-gen-correlation-value>
+        <mq:response-pooling>false</mq:response-pooling>
+        <mq:response-URI>mq://QL_OSB_SV_1986_RESP?conn=DSCL_ConsultaTransaccionVenta_INT1986/Resources/MQConfigurations/QM_SVRESP</mq:response-URI>
+        <mq:response-timeout>20</mq:response-timeout>
+        <mq:response-pattern>MQCorrelationID</mq:response-pattern>
+        <mq:pollingInterval>1000</mq:pollingInterval>
+        <mq:endpoint-URI-PUT-options/>
+        <mq:process-rfh2>false</mq:process-rfh2>
+      </mq:outbound-properties>
+    </tran:provider-specific>
+  </ser:endpointConfig>
+</xml-fragment>

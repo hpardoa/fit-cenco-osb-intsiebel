@@ -1,0 +1,18 @@
+<xsd:schema elementFormDefault="qualified"
+xmlns="http://xmlns.cencosud.corp/ConsultaTransaccionVentaCommon"
+targetNamespace="http://xmlns.cencosud.corp/ConsultaTransaccionVentaCommon"
+xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+<xsd:element name="CommonSoporteVenta" type="CommonSoporteVentaType"/>
+<xsd:complexType name="CommonSoporteVentaType">
+<xsd:sequence>
+	<xsd:element name="Date" type="xsd:string" />
+	<xsd:element name="Time" type="xsd:string" />
+	<xsd:element name="CNResponse" type="xsd:string" />
+	<xsd:element name="Massive" type="xsd:string"  />
+	<xsd:element name="Specific" type="xsd:string"  />
+</xsd:sequence>
+</xsd:complexType>
+
+
+</xsd:schema>

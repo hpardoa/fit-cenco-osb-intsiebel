@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE MessageFormat SYSTEM 'mfl.dtd'>
+<!--           MFL generated from C:\Users\osb\workspace\DSCL_ConsultaTransaccionVenta_INT1986\Resources\Schemas\ConsultaTransaccionVentaResponse.xsd           -->
+<MessageFormat name='respConsultaTransaccionVenta' version='2.01.01'>
+    <StructFormat name='Response' delimOptional='y'>
+        <FieldFormat name='Flag' type='String' delimOptional='y' length='1' strlenInChars='y' codepage='Default'/>
+        <FieldFormat name='NroSegmento' type='String' delimOptional='y' length='2' strlenInChars='y' codepage='Default'/>
+        <FieldFormat name='LargoSegmento' type='String' delimOptional='y' length='3' strlenInChars='y' codepage='Default'/>
+        <FieldFormat name='CodServicio' type='String' delimOptional='y' length='3' strlenInChars='y' codepage='Default'/>
+        <FieldFormat name='Version' type='String' delimOptional='y' length='2' strlenInChars='y' codepage='Default'/>
+        <FieldFormat name='Empresa' type='String' delimOptional='y' length='3' strlenInChars='y' codepage='Default'/>
+        <FieldFormat name='Fecha' type='String' delimOptional='y' length='8' strlenInChars='y' codepage='Default'/>
+        <FieldFormat name='Hora' type='String' delimOptional='y' length='8' strlenInChars='y' codepage='Default'/>
+        <FieldFormat name='ClassService' type='String' delimOptional='y' length='2' strlenInChars='y' codepage='Default'/>
+        <FieldFormat name='TipoTransaccion' type='String' delimOptional='y' length='4' strlenInChars='y' codepage='Default'/>
+        <FieldFormat name='Version2' type='String' delimOptional='y' length='2' strlenInChars='y' codepage='Default'/>
+        <FieldFormat name='CNResponse' type='String' delimOptional='y' length='2' strlenInChars='y' codepage='Default'/>
+        <FieldFormat name='CantOcurrs' type='BigEndian2' delimOptional='y'/>
+        <StructFormat name='RespuestMasiva' delimOptional='y' optional='y' repeatField='CantOcurrs'>
+            <FieldFormat name='Local' type='Numeric' delimOptional='y' length='4' strlenInChars='y' codepage='Default'/>
+            <FieldFormat name='Terminal' type='Numeric' delimOptional='y' length='4' strlenInChars='y' codepage='Default'/>
+            <FieldFormat name='NumeroTransaccion' type='Numeric' delimOptional='y' length='4' strlenInChars='y' codepage='Default'/>
+            <FieldFormat name='FechaVenta' type='Numeric' delimOptional='y' length='8' strlenInChars='y' codepage='Default'/>
+            <FieldFormat name='NumeroCorrelativo' type='Numeric' delimOptional='y' length='2' strlenInChars='y' codepage='Default'/>
+            <FieldFormat name='TipoTransaccion' type='Numeric' delimOptional='y' length='2' strlenInChars='y' codepage='Default'/>
+            <FieldFormat name='NumeroCuenta' type='Numeric' delimOptional='y' length='16' strlenInChars='y' codepage='Default'/>
+            <FieldFormat name='NumeroSolicitud' type='Numeric' delimOptional='y' length='8' strlenInChars='y' codepage='Default'/>
+            <FieldFormat name='TypoSolicitud' type='Numeric' delimOptional='y' length='2' strlenInChars='y' codepage='Default'/>
+            <FieldFormat name='Empresa' type='Numeric' delimOptional='y' length='3' strlenInChars='y' codepage='Default'/>
+            <FieldFormat name='NumeroDocumento' type='Numeric' delimOptional='y' length='12' strlenInChars='y' codepage='Default'/>
+            <FieldFormat name='Rut' type='Numeric' delimOptional='y' length='9' strlenInChars='y' codepage='Default'/>
+            <FieldFormat name='Dv' type='String' delimOptional='y' length='1' strlenInChars='y' codepage='Default'/>
+            <FieldFormat name='Nombre' type='String' delimOptional='y' length='40' strlenInChars='y' codepage='Default'/>
+            <FieldFormat name='Direccion' type='String' delimOptional='y' length='40' strlenInChars='y' codepage='Default'/>
+            <FieldFormat name='MarcaFactura' type='String' delimOptional='y' length='1' strlenInChars='y' codepage='Default'/>
+            <FieldFormat name='CodNovios' type='String' delimOptional='y' length='8' strlenInChars='y' codepage='Default'/>
+        </StructFormat>
+        <StructFormat name='RespuestaEspecifica' delimOptional='y' optional='y'>
+            <FieldFormat name='sLocal' type='Numeric' delimOptional='y' length='4' strlenInChars='y' codepage='Default'/>
+            <FieldFormat name='sTerminal' type='Numeric' delimOptional='y' length='4' strlenInChars='y' codepage='Default'/>
+            <FieldFormat name='sNumeroTransaccion' type='Numeric' delimOptional='y' length='4' strlenInChars='y' codepage='Default'/>
+            <FieldFormat name='sFechaVenta' type='Numeric' delimOptional='y' length='8' strlenInChars='y' codepage='Default'/>
+            <FieldFormat name='sNumeroCorrelativo' type='Numeric' delimOptional='y' length='2' strlenInChars='y' codepage='Default'/>
+            <FieldFormat name='sTipoTransaccion' type='Numeric' delimOptional='y' length='2' strlenInChars='y' codepage='Default'/>
+            <FieldFormat name='sNumeroCuenta' type='Numeric' delimOptional='y' length='16' strlenInChars='y' codepage='Default'/>
+            <FieldFormat name='sNumeroSolicitud' type='Numeric' delimOptional='y' length='8' strlenInChars='y' codepage='Default'/>
+            <FieldFormat name='sTypoSolicitud' type='Numeric' delimOptional='y' length='2' strlenInChars='y' codepage='Default'/>
+            <FieldFormat name='sEmpresa' type='Numeric' delimOptional='y' length='3' strlenInChars='y' codepage='Default'/>
+            <FieldFormat name='sNumeroDocumento' type='Numeric' delimOptional='y' length='12' strlenInChars='y' codepage='Default'/>
+            <FieldFormat name='sRut' type='Numeric' delimOptional='y' length='9' strlenInChars='y' codepage='Default'/>
+            <FieldFormat name='sDv' type='String' delimOptional='y' length='1' strlenInChars='y' codepage='Default'/>
+            <FieldFormat name='sNombre' type='String' delimOptional='y' length='40' strlenInChars='y' codepage='Default'/>
+            <FieldFormat name='sDireccion' type='String' delimOptional='y' length='40' strlenInChars='y' codepage='Default'/>
+            <FieldFormat name='sMarcaFactura' type='String' delimOptional='y' length='1' strlenInChars='y' codepage='Default'/>
+            <FieldFormat name='sCodNovios' type='String' delimOptional='y' length='8' strlenInChars='y' codepage='Default'/>
+            <FieldFormat name='sMediosPagoOcurrs' type='BigEndian2' delimOptional='y'/>
+            <StructFormat name='MediosDePago' delimOptional='y' repeatField='sMediosPagoOcurrs'>
+                <FieldFormat name='CodigoMedioPago' type='String' delimOptional='y' length='2' strlenInChars='y' codepage='Default'/>
+                <FieldFormat name='MontoFormaPago' type='Numeric' delimOptional='y' length='8' strlenInChars='y' codepage='Default'/>
+            </StructFormat>
+            <FieldFormat name='SkuOcurrs' type='BigEndian2' delimOptional='y'/>
+            <StructFormat name='ListaSKU' delimOptional='y' repeatField='SkuOcurrs'>
+                <FieldFormat name='SKU' type='Numeric' delimOptional='y' length='9' strlenInChars='y' codepage='Default'/>
+                <FieldFormat name='DescrpcionSKU' type='String' delimOptional='y' length='20' strlenInChars='y' codepage='Default'/>
+                <FieldFormat name='CantidadSKU' type='Numeric' delimOptional='y' length='5' strlenInChars='y' codepage='Default'/>
+                <FieldFormat name='ValorSKU' type='Numeric' delimOptional='y' length='8' strlenInChars='y' codepage='Default'/>
+                <FieldFormat name='IndicadorProv' type='String' delimOptional='y' length='1' strlenInChars='y' codepage='Default'/>
+                <FieldFormat name='ProveedorRut' type='Numeric' delimOptional='y' length='9' strlenInChars='y' codepage='Default'/>
+                <FieldFormat name='ProveedorDV' type='String' delimOptional='y' length='1' strlenInChars='y' codepage='Default'/>
+                <FieldFormat name='ProveedorNombre' type='String' delimOptional='y' length='30' strlenInChars='y' codepage='Default'/>
+                <FieldFormat name='MarcaDespacho' type='Numeric' delimOptional='y' length='1' strlenInChars='y' codepage='Default'/>
+                <FieldFormat name='CodigoMarca' type='Numeric' delimOptional='y' length='6' strlenInChars='y' codepage='Default'/>
+                <FieldFormat name='DescripcionMarca' type='String' delimOptional='y' length='35' strlenInChars='y' codepage='Default'/>
+                <FieldFormat name='EmisionGui' type='Numeric' delimOptional='y' length='1' strlenInChars='y' codepage='Default'/>
+                <FieldFormat name='IndicadorRegaloRetenido' type='String' delimOptional='y' length='1' strlenInChars='y' codepage='Default'/>
+                <FieldFormat name='EmisionNC' type='Numeric' delimOptional='y' length='1' strlenInChars='y' codepage='Default'/>
+                <FieldFormat name='Departamento' type='Numeric' delimOptional='y' length='3' strlenInChars='y' codepage='Default'/>
+                <FieldFormat name='GuiasOcurrs' type='BigEndian2' delimOptional='y'/>
+                <StructFormat name='DetalleGuias' delimOptional='y' optional='y' repeatField='GuiasOcurrs'>
+                    <FieldFormat name='NumeroGuia' type='Numeric' delimOptional='y' length='8' strlenInChars='y' codepage='Default'/>
+                    <FieldFormat name='TipoGuia' type='Numeric' delimOptional='y' length='2' strlenInChars='y' codepage='Default'/>
+                    <FieldFormat name='EstadoGuia' type='Numeric' delimOptional='y' length='3' strlenInChars='y' codepage='Default'/>
+                    <FieldFormat name='FechaGuia' type='Numeric' delimOptional='y' length='8' strlenInChars='y' codepage='Default'/>
+                    <FieldFormat name='Solicitud' type='Numeric' delimOptional='y' length='8' strlenInChars='y' codepage='Default'/>
+                    <FieldFormat name='TipoSolicitud' type='Numeric' delimOptional='y' length='2' strlenInChars='y' codepage='Default'/>
+                    <FieldFormat name='EstadoSolicitud' type='Numeric' delimOptional='y' length='3' strlenInChars='y' codepage='Default'/>
+                </StructFormat>
+            </StructFormat>
+        </StructFormat>
+    </StructFormat>
+</MessageFormat>

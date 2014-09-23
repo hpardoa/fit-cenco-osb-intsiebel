@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<!DOCTYPE MessageFormat SYSTEM 'mfl.dtd'>
+<!--     Enter description of the message format here.     -->
+<MessageFormat name='DetailReturn' version='2.02'>
+    <StructFormat name='RespuestaEspecifica' delimOptional='y'>
+        <FieldFormat name='sLocal' type='Numeric' delimOptional='y' length='4' strlenInChars='y' codepage='Default'/>
+        <FieldFormat name='sTerminal' type='Numeric' delimOptional='y' length='4' strlenInChars='y' codepage='Default'/>
+        <FieldFormat name='sNumeroTransaccion' type='Numeric' delimOptional='y' length='4' strlenInChars='y' codepage='Default'/>
+        <FieldFormat name='sFechaVenta' type='Numeric' delimOptional='y' length='8' strlenInChars='y' codepage='Default'/>
+        <FieldFormat name='sNumeroCorrelativo' type='Numeric' delimOptional='y' length='2' strlenInChars='y' codepage='Default'/>
+        <FieldFormat name='sTipoTransaccion' type='Numeric' delimOptional='y' length='2' strlenInChars='y' codepage='Default'/>
+        <FieldFormat name='sNumeroCuenta' type='Numeric' delimOptional='y' length='16' strlenInChars='y' codepage='Default'/>
+        <FieldFormat name='sNumeroSolicitud' type='Numeric' delimOptional='y' length='8' strlenInChars='y' codepage='Default'/>
+        <FieldFormat name='sTypoSolicitud' type='Numeric' delimOptional='y' length='2' strlenInChars='y' codepage='Default'/>
+        <FieldFormat name='sEmpresa' type='Numeric' delimOptional='y' length='3' strlenInChars='y' codepage='Default'/>
+        <FieldFormat name='sNumeroDocumento' type='Numeric' delimOptional='y' length='12' strlenInChars='y' codepage='Default'/>
+        <FieldFormat name='sRut' type='Numeric' delimOptional='y' length='9' strlenInChars='y' codepage='Default'/>
+        <FieldFormat name='sDv' type='String' delimOptional='y' length='1' strlenInChars='y' codepage='Default'/>
+        <FieldFormat name='sNombre' type='String' delimOptional='y' length='40' strlenInChars='y' codepage='Default'/>
+        <FieldFormat name='sDireccion' type='String' delimOptional='y' length='40' strlenInChars='y' codepage='Default'/>
+        <FieldFormat name='sMarcaFactura' type='String' delimOptional='y' length='1' strlenInChars='y' codepage='Default'/>
+        <FieldFormat name='sCodNovios' type='String' delimOptional='y' length='8' strlenInChars='y' codepage='Default'/>
+        <FieldFormat name='sMediosPagoOcurrs' type='Numeric' delimOptional='y' length='1' strlenInChars='y' codepage='Default'/>
+        <StructFormat name='MediosDePago' delimOptional='y' repeat='6'>
+            <FieldFormat name='CodigoMedioPago' type='String' delimOptional='y' length='2' strlenInChars='y' codepage='Default'/>
+            <FieldFormat name='MontoFormaPago' type='Numeric' delimOptional='y' length='8' strlenInChars='y' codepage='Default' truncateAfter='3'/>
+        </StructFormat>
+        <FieldFormat name='SkuOcurrs' type='Numeric' delimOptional='y' length='2' strlenInChars='y' codepage='Default'/>
+		</StructFormat>
+</MessageFormat>

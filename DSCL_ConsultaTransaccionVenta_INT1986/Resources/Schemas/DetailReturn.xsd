@@ -1,0 +1,76 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="DetailReturn">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="RespuestaEspecifica">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:int" name="sLocal"/>
+              <xs:element type="xs:int" name="sTerminal"/>
+              <xs:element type="xs:short" name="sNumeroTransaccion"/>
+              <xs:element type="xs:int" name="sFechaVenta"/>
+              <xs:element type="xs:int" name="sNumeroCorrelativo"/>
+              <xs:element type="xs:int" name="sTipoTransaccion"/>
+              <xs:element type="xs:int" name="sNumeroCuenta"/>
+              <xs:element type="xs:int" name="sNumeroSolicitud"/>
+              <xs:element type="xs:int" name="sTypoSolicitud"/>
+              <xs:element type="xs:int" name="sEmpresa"/>
+              <xs:element type="xs:int" name="sNumeroDocumento"/>
+              <xs:element type="xs:int" name="sRut"/>
+              <xs:element type="xs:string" name="sDv"/>
+              <xs:element type="xs:string" name="sNombre"/>
+              <xs:element type="xs:string" name="sDireccion"/>
+              <xs:element type="xs:string" name="sMarcaFactura"/>
+              <xs:element type="xs:string" name="sCodNovios"/>
+              <xs:element type="xs:int" name="sMediosPagoOcurrs"/>
+              <xs:element name="MediosDePago" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="CodigoMedioPago"/>
+                    <xs:element type="xs:int" name="MontoFormaPago"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element type="xs:int" name="SkuOcurrs"/>
+              <xs:element name="ListaSKU" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:int" name="SKU"/>
+                    <xs:element type="xs:string" name="DescrpcionSKU"/>
+                    <xs:element type="xs:int" name="CantidadSKU"/>
+                    <xs:element type="xs:int" name="ValorSKU"/>
+                    <xs:element type="xs:string" name="IndicadorProv"/>
+                    <xs:element type="xs:int" name="ProveedorRut"/>
+                    <xs:element type="xs:string" name="ProveedorDV"/>
+                    <xs:element type="xs:string" name="ProveedorNombre"/>
+                    <xs:element type="xs:int" name="MarcaDespacho"/>
+                    <xs:element type="xs:int" name="CodigoMarca"/>
+                    <xs:element type="xs:string" name="DescripcionMarca"/>
+                    <xs:element type="xs:int" name="EmisionGui"/>
+                    <xs:element type="xs:string" name="IndicadorRegaloRetenido"/>
+                    <xs:element type="xs:int" name="EmisionNC"/>
+                    <xs:element type="xs:int" name="Departamento"/>
+                    <xs:element type="xs:int" name="GuiasOcurrs"/>
+                    <xs:element name="DetalleGuias" maxOccurs="unbounded" minOccurs="0">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:int" name="NumeroGuia"/>
+                          <xs:element type="xs:int" name="TipoGuia"/>
+                          <xs:element type="xs:int" name="EstadoGuia"/>
+                          <xs:element type="xs:int" name="FechaGuia"/>
+                          <xs:element type="xs:int" name="Solicitud"/>
+                          <xs:element type="xs:int" name="TipoSolicitud"/>
+                          <xs:element type="xs:int" name="EstadoSolicitud"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

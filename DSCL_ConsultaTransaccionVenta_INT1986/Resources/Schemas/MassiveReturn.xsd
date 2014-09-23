@@ -1,0 +1,32 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="MassiveReturn">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element type="xs:int" name="CantOcurrs"/>
+        <xs:element name="RespuestMasiva" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:int" name="Local"/>
+              <xs:element type="xs:int" name="Terminal"/>
+              <xs:element type="xs:int" name="NumeroTransaccion"/>
+              <xs:element type="xs:int" name="FechaVenta"/>
+              <xs:element type="xs:int" name="NumeroCorrelativo"/>
+              <xs:element type="xs:int" name="TipoTransaccion"/>
+              <xs:element type="xs:long" name="NumeroCuenta"/>
+              <xs:element type="xs:int" name="NumeroSolicitud"/>
+              <xs:element type="xs:int" name="TypoSolicitud"/>
+              <xs:element type="xs:int" name="Empresa"/>
+              <xs:element type="xs:int" name="NumeroDocumento"/>
+              <xs:element type="xs:int" name="Rut"/>
+              <xs:element type="xs:string" name="Dv"/>
+              <xs:element type="xs:string" name="Nombre"/>
+              <xs:element type="xs:string" name="Direccion"/>
+              <xs:element type="xs:string" name="MarcaFactura"/>
+              <xs:element type="xs:int" name="CodNovios"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

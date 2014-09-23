@@ -1,0 +1,53 @@
+<wsdl:definitions name="ConsultaTransaccionVenta" targetNamespace="http://xmlns.cencosud.corp/CENCOSUD/Siebel/SDV/Resources/WSDL/SDV/ConsultaTransVentas/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://xmlns.cencosud.corp/CENCOSUD/Siebel/SDV/Resources/WSDL/SDV/ConsultaTransVentas/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:conr="http://xmlns.cencosud.corp/ConsultaTransaccionVentaRequest" xmlns:conrq="http://xmlns.cencosud.corp/ConsultaTransaccionVentaResponse">
+
+    <wsdl:import namespace="http://xmlns.cencosud.corp/ConsultaTransaccionVentaResponse" location="../Schemas/ConsultaTransaccionVentaResponse.xsd"/>
+    <wsdl:import namespace="http://xmlns.cencosud.corp/ConsultaTransaccionVentaRequest" location="../Schemas/ConsultaTransaccionVentaRequest.xsd"/>
+    
+    <wsdl:types>
+    <xsd:schema targetNamespace="http://xmlns.cencosud.corp/CENCOSUD/Siebel/SDV/Resources/WSDL/SDV/ConsultaTransVentas/">
+      <xsd:element name="ConsutaTransVentaOp">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="conr:reqConsultaTransaccionVenta"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ConsutaTransVentaOpResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="conrq:respConsultaTransaccionVenta"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ConsutaTransVentaOpRequest">
+    <wsdl:part element="tns:ConsutaTransVentaOp" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="ConsutaTransVentaOpResponse">
+    <wsdl:part element="tns:ConsutaTransVentaOpResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:portType name="ConsultaTransaccionVenta">
+    <wsdl:operation name="ConsutaTransVentaOp">
+      <wsdl:input message="tns:ConsutaTransVentaOpRequest"/>
+      <wsdl:output message="tns:ConsutaTransVentaOpResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ConsultaTransaccionVentaSOAP" type="tns:ConsultaTransaccionVenta">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="ConsutaTransVentaOp">
+      <soap:operation soapAction="http://xmlns.cencosud.corp/ConsultaTransaccionVenta/ConsutaTransaccionVenta"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ConsultaTransaccionVenta">
+    <wsdl:port binding="tns:ConsultaTransaccionVentaSOAP" name="ConsultaTransaccionVentaSOAP">
+      <soap:address location="http://xmlns.cencosud.corp/CENCOSUD/Siebel/SDV/Resources/WSDL/SDV/ConsultaTransVentas/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

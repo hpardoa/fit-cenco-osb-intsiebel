@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<!DOCTYPE MessageFormat SYSTEM 'mfl.dtd'>
+<!--   Enter description of the message format here.   -->
+<MessageFormat name='MassiveReturn' version='2.02'>
+    <FieldFormat name='CantOcurrs' type='Numeric' delimOptional='y' length='2' strlenInChars='y' codepage='Default'/>
+    <StructFormat name='RespuestMasiva' delimOptional='y' repeatField='CantOcurrs'>
+        <FieldFormat name='Local' type='Numeric' delimOptional='y' length='4' strlenInChars='y' codepage='Default'/>
+        <FieldFormat name='Terminal' type='Numeric' delimOptional='y' length='4' strlenInChars='y' codepage='Default'/>
+        <FieldFormat name='NumeroTransaccion' type='Numeric' delimOptional='y' length='4' strlenInChars='y' codepage='Default'/>
+        <FieldFormat name='FechaVenta' type='Numeric' delimOptional='y' length='8' strlenInChars='y' codepage='Default'/>
+        <FieldFormat name='NumeroCorrelativo' type='Numeric' delimOptional='y' length='2' strlenInChars='y' codepage='Default'/>
+        <FieldFormat name='TipoTransaccion' type='Numeric' delimOptional='y' length='2' strlenInChars='y' codepage='Default'/>
+        <FieldFormat name='NumeroCuenta' type='Numeric' delimOptional='y' length='16' strlenInChars='y' codepage='Default'/>
+        <FieldFormat name='NumeroSolicitud' type='Numeric' delimOptional='y' length='8' strlenInChars='y' codepage='Default'/>
+        <FieldFormat name='TypoSolicitud' type='Numeric' delimOptional='y' length='2' strlenInChars='y' codepage='Default'/>
+        <FieldFormat name='Empresa' type='Numeric' delimOptional='y' length='3' strlenInChars='y' codepage='Default'/>
+        <FieldFormat name='NumeroDocumento' type='Numeric' delimOptional='y' length='12' strlenInChars='y' codepage='Default'/>
+        <FieldFormat name='Rut' type='Numeric' delimOptional='y' length='9' strlenInChars='y' codepage='Default'/>
+        <FieldFormat name='Dv' type='String' delimOptional='y' length='1' strlenInChars='y' codepage='Default'/>
+        <FieldFormat name='Nombre' type='String' delimOptional='y' length='40' strlenInChars='y' codepage='Default'/>
+        <FieldFormat name='Direccion' type='String' delimOptional='y' length='40' strlenInChars='y' codepage='Default'/>
+        <FieldFormat name='MarcaFactura' type='String' delimOptional='y' length='1' strlenInChars='y' codepage='Default'/>
+        <FieldFormat name='CodNovios' type='String' delimOptional='y' length='8' strlenInChars='y' codepage='Default'/>
+    </StructFormat>
+</MessageFormat>

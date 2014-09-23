@@ -1,0 +1,42 @@
+<xsd:schema targetNamespace="http://xmlns.cencosud.corp/ConsultaTransaccionVentaRequest" elementFormDefault="qualified" xmlns:commonebm="http://xmlns.cencosud.corp/Core/EBM/Common/EBM" xmlns="http://xmlns.cencosud.corp/ConsultaTransaccionVentaRequest" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+<xsd:import namespace="http://xmlns.cencosud.corp/Core/EBM/Common/EBM" schemaLocation="../../../CommonCore/EBM/Common/EBMV2.xsd"/>
+
+
+<xsd:element name="reqConsultaTransaccionVenta" type="ConsultaTransaccionVentaType"/>
+
+
+<xsd:complexType name="ConsultaTransaccionVentaType">
+				<xsd:sequence>
+					<xsd:element ref="commonebm:EBMHeader"/>
+					<xsd:element name="DataArea" type="DataAreaType" minOccurs="1" maxOccurs="1"/>
+				</xsd:sequence>
+	</xsd:complexType>
+		<xsd:complexType name="DataAreaType">
+		   	<xsd:sequence>
+				<xsd:element name="Flag" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+				<xsd:element name="NroSegment" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+				<xsd:element name="LongSegment" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+				<xsd:element name="ServiceCode" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+				<xsd:element name="Version" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+				<xsd:element name="Company" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+				<xsd:element name="Fecha" type="xsd:integer" minOccurs="1" maxOccurs="1"/>
+				<xsd:element name="Hora" type="xsd:integer" minOccurs="1" maxOccurs="1"/>
+				<xsd:element name="ServiceClass" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+				<xsd:element name="TransactionType" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+				<xsd:element name="Version2" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+				<xsd:element name="CNDispatchRequestNumber" type="xsd:integer" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="CNDispatchOrderNumber" type="xsd:integer" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="CNStoreID" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="CNTerminal" type="xsd:integer" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="CNTransactionNumber" type="xsd:integer" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="CNTransactiondate" type="xsd:date" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="CNAccountNumber" type="xsd:integer" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="CNMeanofpayment" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="CNDateFrom" type="xsd:date" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="CNDateto" type="xsd:date" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="CNSKU" type="xsd:integer" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+</xsd:schema>
