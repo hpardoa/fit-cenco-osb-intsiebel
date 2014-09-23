@@ -1,0 +1,41 @@
+<xsd:schema elementFormDefault="qualified" targetNamespace="http://xmlns.cencosud.corp/Common/ErrorHospital" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:commonebm="http://xmlns.cencosud.corp/Core/EBM/Common/EBM" xmlns:errorH="http://xmlns.cencosud.corp/Common/ErrorHospital" xmlns="http://www.w3.org/2001/XMLSchema">
+
+
+	<xsd:import namespace="http://xmlns.cencosud.corp/Core/EBM/Common/EBM" schemaLocation="../../../../CommonCore/EBM/Common/EBM.xsd"/>
+
+
+	<xsd:complexType name="ErrorHospitalCommonMessageType">
+		<xsd:sequence>
+			<xsd:element ref="commonebm:EBMHeader"/>
+			<xsd:element name="fault" type="xsd:anyType"/>
+			<xsd:element ref="errorH:ErrorHospitalContext"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:element name="ProviderInfo" nillable="true" type="errorH:ProviderInfoType"/>
+
+
+	<xsd:complexType name="ProviderInfoType">
+		<xsd:sequence>
+			<xsd:element name="ApplicationName" type="xsd:string" minOccurs="0" nillable="true"/>
+			<xsd:element name="ServiceName" type="xsd:string" minOccurs="0" nillable="true"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+
+	<xsd:element name="ErrorHospitalCommonMessage" type="errorH:ErrorHospitalCommonMessageType"/>
+
+	<xsd:complexType name="ContextType">
+		<xsd:sequence>
+			<xsd:element name="applicationName" type="xsd:string" minOccurs="0" nillable="true"/>
+			<xsd:element name="integrationCode" type="xsd:string" minOccurs="0" nillable="true"/>
+			<xsd:element name="operation" type="xsd:string" minOccurs="0" nillable="true"/>
+			<xsd:element ref="errorH:ProviderInfo" minOccurs="0"/>
+			<xsd:element name="payload" type="xsd:anyType" minOccurs="0" nillable="true"/>
+			<xsd:element ref="commonebm:ErrorDetail" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:element name="ErrorHospitalContext" type="errorH:ContextType"/>
+
+</xsd:schema>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml-fragment xmlns:ser="http://www.bea.com/wli/sb/services" xmlns:tran="http://www.bea.com/wli/sb/transports" xmlns:env="http://www.bea.com/wli/config/env" xmlns:http="http://www.bea.com/wli/sb/transports/http" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://www.bea.com/wli/sb/typesystem/config" xmlns:con1="http://www.bea.com/wli/sb/pipeline/config" xmlns:con2="http://www.bea.com/wli/sb/stages/config" xmlns:con3="http://www.bea.com/wli/sb/stages/transform/config">
+  <ser:coreEntry isProxy="true" isEnabled="true" isAutoPublish="false" isTracingEnabled="false">
+    <ser:binding type="Mixed" xsi:type="con:MixedBindingType" xmlns:con="http://www.bea.com/wli/sb/services/bindings/config">
+      <con:request type="XML">
+        <con4:schema ref="Common/ErrorHandling/Resources/Schemas/ErrorHospitalEBM" element="ErrorHospitalCommonMessage" xmlns:con4="http://www.bea.com/wli/sb/typesystem/config"/>
+      </con:request>
+      <con:response type="XML">
+        <con4:schema ref="CommonCore/EBM/Common/EBM" type="ResponseEBMType" xmlns:con4="http://www.bea.com/wli/sb/typesystem/config"/>
+      </con:response>
+    </ser:binding>
+    <ser:monitoring isEnabled="false">
+      <ser:aggregationInterval>10</ser:aggregationInterval>
+      <ser:pipelineMonitoringLevel>Pipeline</ser:pipelineMonitoringLevel>
+    </ser:monitoring>
+    <ser:reporting>true</ser:reporting>
+    <ser:logging isEnabled="true">
+      <ser:logLevel>debug</ser:logLevel>
+    </ser:logging>
+    <ser:sla-alerting isEnabled="true">
+      <ser:alertLevel>normal</ser:alertLevel>
+    </ser:sla-alerting>
+    <ser:pipeline-alerting isEnabled="true">
+      <ser:alertLevel>normal</ser:alertLevel>
+    </ser:pipeline-alerting>
+  </ser:coreEntry>
+  <ser:endpointConfig>
+    <tran:provider-id>http</tran:provider-id>
+    <tran:inbound>true</tran:inbound>
+    <tran:URI>
+      <env:value>/Common/ErrorHandling/Proxy_Services/ErrorFormatterPS</env:value>
+    </tran:URI>
+    <tran:inbound-properties/>
+    <tran:all-headers>false</tran:all-headers>
+    <tran:provider-specific>
+      <http:inbound-properties/>
+    </tran:provider-specific>
+  </ser:endpointConfig>
+  <ser:router>
+    <con1:pipeline type="request" name="ErrorFormatterPS_request">
+      <con1:stage name="Build Response">
+        <con1:context>
+          <con2:userNsDecl namespace="http://xmlns.cencosud.corp/Common/ErrorHospital" prefix="err1"/>
+          <con2:userNsDecl namespace="http://xmlns.cencosud.corp/Core/EBM/Common/EBM" prefix="ebm"/>
+        </con1:context>
+        <con1:actions>
+          <con3:assign varName="errorDetail">
+            <con2:id>_ActionId-6124594015752036566--ca1d3a3.13cfea5c47b.626</con2:id>
+            <con3:expr>
+              <con2:xqueryText>$body/err1:ErrorHospitalCommonMessage/err1:ErrorHospitalContext/ebm:ErrorDetail</con2:xqueryText>
+            </con3:expr>
+          </con3:assign>
+          <con3:assign varName="responseEBM">
+            <con2:id>_ActionId-6124594015752036566--ca1d3a3.13cfea5c47b.642</con2:id>
+            <con3:expr>
+              <con2:xqueryTransform>
+                <con2:resource ref="Common/ErrorHandling/Resources/XQuery/ResponseEBMErrorType"/>
+                <con2:param name="context">
+                  <con2:path>$body/err1:ErrorHospitalCommonMessage/err1:ErrorHospitalContext</con2:path>
+                </con2:param>
+                <con2:param name="eBMHeader1">
+                  <con2:path>$body/err1:ErrorHospitalCommonMessage/ebm:EBMHeader</con2:path>
+                </con2:param>
+                <con2:param name="fault">
+                  <con2:path>$body/err1:ErrorHospitalCommonMessage/err1:fault/*</con2:path>
+                </con2:param>
+              </con2:xqueryTransform>
+            </con3:expr>
+          </con3:assign>
+          <con7:ifThenElse xmlns:con="http://www.bea.com/wli/sb/pipeline/config" xmlns:con2="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con5="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con4="http://www.bea.com/wli/sb/stages/routing/config" xmlns:con6="http://www.bea.com/wli/sb/typesystem/config" xmlns:con1="http://www.bea.com/wli/sb/stages/config" xmlns:con7="http://www.bea.com/wli/sb/stages/transform/config">
+            <con1:id>_ActionId-6124594015752036566--ca1d3a3.13cfea5c47b.797</con1:id>
+            <con7:case>
+              <con7:condition>
+                <con1:xqueryText>fn:starts-with(data($body/err1:ErrorHospitalCommonMessage/err1:fault/ctx:errorCode),'SOA-') 
+and fn:exists($errorDetail)</con1:xqueryText>
+              </con7:condition>
+              <con7:actions>
+                <con7:insert varName="responseEBM">
+                  <con1:id>_ActionId-6124594015752036566--ca1d3a3.13cfea5c47b.798</con1:id>
+                  <con7:location>
+                    <con1:xpathText>./*[1]/ebm:ErrorDetail/ebm:SourceErrorTrace</con1:xpathText>
+                  </con7:location>
+                  <con7:where>last-child</con7:where>
+                  <con7:expr>
+                    <con1:xqueryText>fn-bea:serialize($errorDetail)</con1:xqueryText>
+                  </con7:expr>
+                </con7:insert>
+              </con7:actions>
+            </con7:case>
+            <con7:default/>
+          </con7:ifThenElse>
+        </con1:actions>
+      </con1:stage>
+    </con1:pipeline>
+    <con1:pipeline type="response" name="ErrorFormatterPS_response">
+      <con1:stage name="Return Response">
+        <con1:context/>
+        <con1:actions>
+          <con3:replace contents-only="true" varName="body">
+            <con2:id>_ActionId-6124594015752036566--ca1d3a3.13cfea5c47b.7b3</con2:id>
+            <con3:location>
+              <con2:xpathText>.</con2:xpathText>
+            </con3:location>
+            <con3:expr>
+              <con2:xqueryText>$responseEBM</con2:xqueryText>
+            </con3:expr>
+          </con3:replace>
+        </con1:actions>
+      </con1:stage>
+    </con1:pipeline>
+    <con1:flow>
+      <con1:pipeline-node name="ErrorFormatterPS">
+        <con1:request>ErrorFormatterPS_request</con1:request>
+        <con1:response>ErrorFormatterPS_response</con1:response>
+      </con1:pipeline-node>
+    </con1:flow>
+  </ser:router>
+</xml-fragment>

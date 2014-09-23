@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://xmlns.cencosud.corp/Common/Logging"
+	xmlns:bcgl="http://xmlns.cencosud.corp/Common/Logging"
+	elementFormDefault="qualified">
+
+	<complexType name="CencosudGlobalBAMLogType">
+		<sequence>
+			<element name="transactionId" type="string"/>
+			<element name="requesterTransactionId" type="string"/>
+			<element name="lineNumber" type="string"/>
+			<element name="logDateTime" type="dateTime"/>
+			<element name="country" type="string"/>
+			<element name="businessUnit" type="string"/>
+			<element name="society" type="string"/>
+			<element name="center" type="string"/>
+			<element name="sourceSystem" type="string"/>
+			<element name="sourceObjectType" type="string"/>
+			<element name="sourceObjectName" type="string"/>
+			<element name="sourceDateTime" type="dateTime"/>
+			<element name="targetSystem" type="string"/>
+			<element name="targetObjectType" type="string"/>
+			<element name="targetObjectName" type="string"/>
+			<element name="targetDateTime" type="dateTime"/>
+			<element name="interfaceType" type="string"/>
+			<element name="errorCode" type="string"/>
+			<element name="errorDescription" type="string"/>
+			<element name="transactionStatus" type="string"/>
+			<element name="businessProjectDomain" type="string"/>
+			<element name="interfaceId" type="string"/>
+			<element name="serviceName" type="string"/>
+			<element name="sourceLog" type="string" nillable="true" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	
+	<element name="CencosudGlobalBAMLog" type="bcgl:CencosudGlobalBAMLogType"/>
+ 
+</schema>
