@@ -1,0 +1,51 @@
+<wsdl:definitions name="WSDL_DSCL_ConsultaReclamo" targetNamespace="http://xmlns.cencosud.corp/CENCOSUD/Siebel/SDV/Resources/WSDL/SDV/ConsultaReclamo" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://xmlns.cencosud.corp/CENCOSUD/Siebel/SDV/Resources/WSDL/SDV/ConsultaReclamo" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:conrq="http://xmlns.cencosud.corp/ConsultaReclamoRequest" xmlns:conrp="http://xmlns.cencosud.corp/ConsultaReclamoResponse">
+    <wsdl:import namespace="http://xmlns.cencosud.corp/ConsultaReclamoRequest" location="../Schemas/ConsultaReclamoRequest.xsd"/>
+    <wsdl:import namespace="http://xmlns.cencosud.corp/ConsultaReclamoResponse" location="../Schemas/ConsultaReclamoResponse.xsd"/>
+    <wsdl:types>
+    <xsd:schema targetNamespace="http://xmlns.cencosud.corp/CENCOSUD/Siebel/SDV/Resources/WSDL/SDV/ConsultaReclamo">
+      <xsd:element name="ConsultaReclamo">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="conrq:reqConsultaReclamo"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ConsultaReclamoResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+           <xsd:element ref="conrp:respConsultaReclamo"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ConsultaReclamoRequest">
+    <wsdl:part element="tns:ConsultaReclamo" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="ConsultaReclamoResponse">
+    <wsdl:part element="tns:ConsultaReclamoResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:portType name="WSDL_DSCL_ConsultaReclamo">
+    <wsdl:operation name="ConsultaReclamo">
+      <wsdl:input message="tns:ConsultaReclamoRequest"/>
+      <wsdl:output message="tns:ConsultaReclamoResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WSDL_DSCL_ConsultaReclamoSOAP" type="tns:WSDL_DSCL_ConsultaReclamo">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="ConsultaReclamo">
+      <soap:operation soapAction="http://xmlns.cencosud.corp/CENCOSUD/Siebel/SDV/Resources/WSDL/SDV/ConsultaReclamo/NewOperation"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WSDL_DSCL_ConsultaReclamo">
+    <wsdl:port binding="tns:WSDL_DSCL_ConsultaReclamoSOAP" name="WSDL_DSCL_ConsultaReclamoSOAP">
+      <soap:address location="http://www.example.org/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

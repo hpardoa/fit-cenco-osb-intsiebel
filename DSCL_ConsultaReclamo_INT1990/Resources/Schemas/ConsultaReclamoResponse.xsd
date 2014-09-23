@@ -1,0 +1,16 @@
+<xsd:schema elementFormDefault="qualified"
+xmlns="http://xmlns.cencosud.corp/ConsultaReclamoResponse"
+targetNamespace="http://xmlns.cencosud.corp/ConsultaReclamoResponse"
+xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+	<xsd:element name="respConsultaReclamo" type="ConsultaReclamoResponseType"/>
+
+	<xsd:complexType name="ConsultaReclamoResponseType">
+            <xsd:sequence>
+                <xsd:element name="ServiceRequest" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="CodigoRespuesta" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+				<xsd:element name="TipoError" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            </xsd:sequence>
+    </xsd:complexType>
+ 
+</xsd:schema>

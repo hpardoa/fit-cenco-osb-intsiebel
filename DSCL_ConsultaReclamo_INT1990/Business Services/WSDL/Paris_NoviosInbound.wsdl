@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?><definitions
+ xmlns="http://schemas.xmlsoap.org/wsdl/"
+ xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+ xmlns:xsdLocal1="http://www.siebel.com/xml/CN%20Novios_Paris"
+ targetNamespace="http://siebel.com/asi/"
+ xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+ xmlns:tns="http://siebel.com/asi/"
+><types
+><xsd:schema
+ elementFormDefault="qualified"
+ attributeFormDefault="unqualified"
+ xmlns:xsdLocal1="http://www.siebel.com/xml/CN%20Novios_Paris"
+ targetNamespace="http://www.siebel.com/xml/CN%20Novios_Paris"
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+><xsd:annotation
+><xsd:documentation
+>Copyright (C) 2001-2004 Siebel Systems, Inc. All rights reserved. Siebel XSD Generation</xsd:documentation
+></xsd:annotation
+><xsd:element
+ name="Client"
+ type="xsdLocal1:Client"
+></xsd:element
+><xsd:complexType
+ name="ClientTopElmt"
+><xsd:sequence
+><xsd:element
+ name="Client"
+ maxOccurs="1"
+ minOccurs="1"
+ type="xsdLocal1:Client"
+></xsd:element
+></xsd:sequence
+></xsd:complexType
+><xsd:complexType
+ name="Client"
+><xsd:sequence
+><xsd:element
+ name="CNDocumentType"
+ maxOccurs="1"
+ minOccurs="1"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="CNNoviosCode"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="Source"
+ maxOccurs="1"
+ minOccurs="1"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="CNVerificationDigit"
+ maxOccurs="1"
+ minOccurs="1"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="CellularPhone"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="CNDocumentId"
+ maxOccurs="1"
+ minOccurs="1"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="EmailAddress"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="FirstName"
+ maxOccurs="1"
+ minOccurs="1"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="LastName"
+ maxOccurs="1"
+ minOccurs="1"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="MotherMaidenName"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="caso"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsdLocal1:caso"
+></xsd:element
+></xsd:sequence
+></xsd:complexType
+><xsd:complexType
+ name="caso"
+><xsd:sequence
+><xsd:element
+ name="CNStoreId"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="Area"
+ maxOccurs="1"
+ minOccurs="1"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="Description"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="Type"
+ maxOccurs="1"
+ minOccurs="1"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="Source"
+ maxOccurs="1"
+ minOccurs="1"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="Status"
+ maxOccurs="1"
+ minOccurs="1"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="Sub-Area"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+></xsd:sequence
+></xsd:complexType
+></xsd:schema
+><xsd:schema
+ elementFormDefault="qualified"
+ attributeFormDefault="unqualified"
+ targetNamespace="http://siebel.com/asi/"
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+><xsd:import
+ namespace="http://www.siebel.com/xml/CN%20Novios_Paris"
+></xsd:import
+><xsd:element
+ name="Request_Input"
+><xsd:complexType
+><xsd:sequence
+><xsd:element
+ ref="xsdLocal1:Client"
+></xsd:element
+></xsd:sequence
+></xsd:complexType
+></xsd:element
+><xsd:element
+ name="Request_Output"
+><xsd:complexType
+><xsd:sequence
+><xsd:element
+ name="ErrorCode"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="ErrorMessage"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="SRNumber"
+ type="xsd:string"
+></xsd:element
+></xsd:sequence
+></xsd:complexType
+></xsd:element
+></xsd:schema
+></types
+><message
+ name="Request_Input"
+><part
+ name="Request_Input"
+ element="tns:Request_Input"
+></part
+></message
+><message
+ name="Request_Output"
+><part
+ name="Request_Output"
+ element="tns:Request_Output"
+></part
+></message
+><portType
+ name="Paris_NoviosInbound"
+><operation
+ name="Request"
+><input
+ message="tns:Request_Input"
+></input
+><output
+ message="tns:Request_Output"
+></output
+></operation
+></portType
+><binding
+ name="Paris_NoviosInbound"
+ type="tns:Paris_NoviosInbound"
+><soap:binding
+ transport="http://schemas.xmlsoap.org/soap/http"
+ style="document"
+></soap:binding
+><operation
+ name="Request"
+><soap:operation
+ soapAction="document/http://siebel.com/asi/:Request"
+></soap:operation
+><input
+><soap:body
+ use="literal"
+></soap:body
+></input
+><output
+><soap:body
+ use="literal"
+></soap:body
+></output
+></operation
+></binding
+><service
+ name="Paris_NoviosInbound"
+><port
+ binding="tns:Paris_NoviosInbound"
+ name="Paris_NoviosInbound"
+><soap:address
+ location="http://g100603sv18m.cencosud.corp:8080/eai_anon_enu/start.swe?SWEExtSource=SecureWebService&amp;SWEExtCmd=Execute"
+></soap:address
+></port
+></service
+></definitions
+>

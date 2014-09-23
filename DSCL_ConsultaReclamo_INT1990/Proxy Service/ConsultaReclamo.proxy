@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml-fragment xmlns:ser="http://www.bea.com/wli/sb/services" xmlns:tran="http://www.bea.com/wli/sb/transports" xmlns:env="http://www.bea.com/wli/config/env" xmlns:http="http://www.bea.com/wli/sb/transports/http" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://www.bea.com/wli/sb/typesystem/config" xmlns:con1="http://www.bea.com/wli/sb/pipeline/config" xmlns:con2="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con3="http://www.bea.com/wli/sb/stages/config">
+  <ser:coreEntry isProxy="true" isEnabled="true" isTracingEnabled="false">
+    <ser:binding type="SOAP" isSoap12="false" xsi:type="con4:SoapBindingType" xmlns:con4="http://www.bea.com/wli/sb/services/bindings/config">
+      <con4:wsdl ref="DSCL_ConsultaReclamo_INT1990/Resources/WSDL/WSDL_DSCL_ConsultaReclamo"/>
+      <con4:port>
+        <con4:name>WSDL_DSCL_ConsultaReclamoSOAP</con4:name>
+        <con4:namespace>http://xmlns.cencosud.corp/CENCOSUD/Siebel/SDV/Resources/WSDL/SDV/ConsultaReclamo</con4:namespace>
+      </con4:port>
+      <con4:selector type="SOAP body"/>
+      <con4:WSI-compliant>false</con4:WSI-compliant>
+    </ser:binding>
+    <ser:monitoring isEnabled="false">
+      <ser:aggregationInterval>10</ser:aggregationInterval>
+      <ser:pipelineMonitoringLevel>Pipeline</ser:pipelineMonitoringLevel>
+    </ser:monitoring>
+    <ser:reporting>true</ser:reporting>
+    <ser:logging isEnabled="true">
+      <ser:logLevel>debug</ser:logLevel>
+    </ser:logging>
+    <ser:sla-alerting isEnabled="true">
+      <ser:alertLevel>normal</ser:alertLevel>
+    </ser:sla-alerting>
+    <ser:pipeline-alerting isEnabled="true">
+      <ser:alertLevel>normal</ser:alertLevel>
+    </ser:pipeline-alerting>
+    <ser:ws-policy>
+      <ser:binding-mode>wsdl-policy-attachments</ser:binding-mode>
+    </ser:ws-policy>
+  </ser:coreEntry>
+  <ser:endpointConfig>
+    <tran:provider-id>http</tran:provider-id>
+    <tran:inbound>true</tran:inbound>
+    <tran:URI>
+      <env:value>/DSCL_ConsultaReclamo_INTXXXX/Proxy_Service/ConsultaReclamo</env:value>
+    </tran:URI>
+    <tran:inbound-properties/>
+    <tran:all-headers>false</tran:all-headers>
+    <tran:provider-specific>
+      <http:inbound-properties/>
+    </tran:provider-specific>
+  </ser:endpointConfig>
+  <ser:router errorHandler="_onErrorHandler-7805779870495563923--672ef173.147b22d634c.-7978">
+    <con1:pipeline type="request" name="ConsultarTransaccionVenta_request">
+      <con1:stage name="Initialize Variables">
+        <con1:context>
+          <con3:varNsDecl namespace="http://xmlns.cencosud.corp/Core/EBM/Common/EBM" prefix="ebm"/>
+          <con3:varNsDecl namespace="http://xmlns.cencosud.corp/ConsultaTransaccionVentaRequest" prefix="con"/>
+          <con3:varNsDecl namespace="http://xmlns.cencosud.corp/CENCOSUD/Siebel/SDV/Resources/WSDL/SDV/ConsultaReclamo" prefix="con1"/>
+          <con3:varNsDecl namespace="http://xmlns.cencosud.corp/ConsultaReclamoRequest" prefix="con2"/>
+        </con1:context>
+        <con1:actions>
+          <con2:assign varName="intCode">
+            <con3:id>_ActionId-1729779625913572475--25543985.147a7e5a125.-7fe8</con3:id>
+            <con2:expr>
+              <con3:xqueryText>'INT1990'</con3:xqueryText>
+            </con2:expr>
+          </con2:assign>
+          <con2:assign varName="correlationId">
+            <con3:id>_ActionId-1729779625913572475--25543985.147a7e5a125.-7fcf</con3:id>
+            <con2:expr>
+              <con3:xqueryText>data(fn-bea:uuid())</con3:xqueryText>
+            </con2:expr>
+          </con2:assign>
+          <con2:assign varName="ebmHeader">
+            <con3:id>_ActionId-1729779625913572475--25543985.147a7e5a125.-7fbd</con3:id>
+            <con2:expr>
+              <con3:xqueryText>$body/con1:ConsultaReclamo/con2:reqConsultaReclamo/EBM/ebm:EBMHeader</con3:xqueryText>
+            </con2:expr>
+          </con2:assign>
+          <con2:assign varName="serviceName">
+            <con3:id>_ActionId-5512464682162052485-500604d1.147abb766e9.-7fcc</con3:id>
+            <con2:expr>
+              <con3:xqueryText>'ConsultaReclamo'</con3:xqueryText>
+            </con2:expr>
+          </con2:assign>
+          <con2:assign varName="context">
+            <con3:id>_ActionId-5512464682162052485-500604d1.147abb766e9.-7faf</con3:id>
+            <con2:expr>
+              <con3:xqueryTransform>
+                <con3:resource ref="Common/ErrorHandling/Resources/XQuery/ErrorHospitalContext"/>
+                <con3:param name="applicationName">
+                  <con3:path>if(fn:exists($ebmHeader/ebm:Sender/ebm:Application)) then $ebmHeader/ebm:Sender/ebm:Application/text() else ''</con3:path>
+                </con3:param>
+                <con3:param name="payload">
+                  <con3:path>$body/*</con3:path>
+                </con3:param>
+                <con3:param name="operation">
+                  <con3:path>$serviceName</con3:path>
+                </con3:param>
+                <con3:param name="integrationCode">
+                  <con3:path>$intCode</con3:path>
+                </con3:param>
+              </con3:xqueryTransform>
+            </con2:expr>
+          </con2:assign>
+        </con1:actions>
+      </con1:stage>
+      <con1:stage name="LogIntoBAM">
+        <con1:context xmlns:con5="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con4="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con6="http://www.bea.com/wli/sb/stages/routing/config" xmlns:jms="http://www.bea.com/wli/sb/transports/jms"/>
+        <con1:actions xmlns:con5="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con4="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con6="http://www.bea.com/wli/sb/stages/routing/config" xmlns:jms="http://www.bea.com/wli/sb/transports/jms">
+          <con4:route>
+            <con3:id>_ActionId-7805779870495563923--672ef173.147b22d634c.-7efd</con3:id>
+            <con4:service ref="Common/Logging/Proxy Services/LogIntoBAM" xsi:type="ref:ProxyRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+            <con4:outboundTransform>
+              <con2:replace varName="body" contents-only="true">
+                <con3:id>_ActionId-7805779870495563923--672ef173.147b22d634c.-7efc</con3:id>
+                <con2:location>
+                  <con3:xpathText>.</con3:xpathText>
+                </con2:location>
+                <con2:expr>
+                  <con3:xqueryText>$bamLog</con3:xqueryText>
+                </con2:expr>
+              </con2:replace>
+            </con4:outboundTransform>
+          </con4:route>
+        </con1:actions>
+      </con1:stage>
+      <con1:stage name="XML Transform">
+        <con1:context xmlns:con5="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con4="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con6="http://www.bea.com/wli/sb/stages/routing/config" xmlns:jms="http://www.bea.com/wli/sb/transports/jms">
+          <con3:varNsDecl namespace="http://www.example.org/PurchaseOrderInputMessageEBM" prefix="pur"/>
+          <con3:varNsDecl namespace="http://www.example.org/PurchaseOrderInputMessage" prefix="pur1"/>
+          <con3:varNsDecl namespace="http://www.example.org/PurchaseOrderStatusInputMessageEBM" prefix="pur2"/>
+          <con3:varNsDecl namespace="http://xmlns.cencosud.corp/ConsultaTransaccionVentaResponse" prefix="con"/>
+          <con3:varNsDecl namespace="http://xmlns.cencosud.corp/ConsultaTransaccionVentaRequest" prefix="con1"/>
+          <con3:varNsDecl namespace="http://xmlns.cencosud.corp/ConsultaTransaccionVenta/" prefix="con2"/>
+          <con3:varNsDecl namespace="http://xmlns.cencosud.corp/CENCOSUD/Siebel/SDV/Resources/WSDL/SDV/ConsultaReclamo" prefix="con3"/>
+          <con3:varNsDecl namespace="http://xmlns.cencosud.corp/ConsultaReclamoRequest" prefix="con4"/>
+        </con1:context>
+        <con1:actions xmlns:con5="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con4="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con6="http://www.bea.com/wli/sb/stages/routing/config" xmlns:jms="http://www.bea.com/wli/sb/transports/jms">
+          <con2:assign varName="reqBusiness">
+            <con3:id>_ActionId-7969012129911640034-bcf7afd.147f94b5691.-7fc2</con3:id>
+            <con2:expr>
+              <con3:xqueryTransform>
+                <con3:resource ref="DSCL_ConsultaReclamo_INT1990/Resources/XQuery/ParisCL_to_Siebel"/>
+                <con3:param name="dataArea1">
+                  <con3:path>$body/con3:ConsultaReclamo/con4:reqConsultaReclamo/con4:DataArea</con3:path>
+                </con3:param>
+              </con3:xqueryTransform>
+            </con2:expr>
+          </con2:assign>
+          <con5:log>
+            <con3:id>_ActionId-7805779870495563923--672ef173.147b22d634c.-7d9e</con3:id>
+            <con5:logLevel>info</con5:logLevel>
+            <con5:expr>
+              <con3:xqueryText>$body</con3:xqueryText>
+            </con5:expr>
+            <con5:message/>
+          </con5:log>
+        </con1:actions>
+      </con1:stage>
+      <con1:stage name="RouteBs">
+        <con1:context/>
+        <con1:actions>
+          <con2:assign varName="SiebelHeader">
+            <con3:id>_ActionId-192012594254759153--42f3a2e.1481d191e22.-7b60</con3:id>
+            <con2:expr>
+              <con3:xqueryText><![CDATA[<soap:Header  	xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+<wsse:Security xmlns:wsse="http://schemas.xmlsoap.org/ws/2002/04/secext">
+<wsse:UsernameToken>
+<wsse:Username>EAIUSR</wsse:Username> 
+<wsse:Password Type="wsse:PasswordText">EAIUSR123</wsse:Password>
+</wsse:UsernameToken>
+</wsse:Security> 
+</soap:Header>]]></con3:xqueryText>
+            </con2:expr>
+          </con2:assign>
+          <con2:wsCallout>
+            <con3:id>_ActionId-7805779870495563923--672ef173.147b22d634c.-7af5</con3:id>
+            <con2:service xsi:type="ref:BusinessServiceRef" ref="DSCL_ConsultaReclamo_INT1990/Business Services/ParisNoviosInbound_Siebel" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+            <con2:operation>Request</con2:operation>
+            <con2:request>
+              <con2:body>$reqBusiness</con2:body>
+              <con2:header>$SiebelHeader</con2:header>
+            </con2:request>
+            <con2:response>
+              <con2:body>respBusiness</con2:body>
+            </con2:response>
+            <con2:requestTransform/>
+            <con2:responseTransform/>
+          </con2:wsCallout>
+        </con1:actions>
+      </con1:stage>
+    </con1:pipeline>
+    <con1:pipeline type="response" name="ConsultarTransaccionVenta_response">
+      <con1:stage name="TransformBs">
+        <con1:context/>
+        <con1:actions>
+          <con2:assign varName="responsePX">
+            <con3:id>_ActionId-7805779870495563923--672ef173.147b22d634c.-79ee</con3:id>
+            <con2:expr>
+              <con3:xqueryTransform>
+                <con3:resource ref="DSCL_ConsultaReclamo_INT1990/Resources/XQuery/Siebel_to_ParisCL"/>
+                <con3:param name="request_Output1">
+                  <con3:path>$respBusiness</con3:path>
+                </con3:param>
+              </con3:xqueryTransform>
+            </con2:expr>
+          </con2:assign>
+        </con1:actions>
+      </con1:stage>
+      <con1:stage name="LogIntoBAM1">
+        <con1:context xmlns:mq="http://www.bea.com/wli/sb/transports/mq" xmlns:con5="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con4="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con6="http://www.bea.com/wli/sb/stages/routing/config" xmlns:jms="http://www.bea.com/wli/sb/transports/jms">
+          <con3:userNsDecl namespace="http://xmlns.cencosud.corp/Core/EBM/Common/EBM" prefix="ebm"/>
+          <con3:userNsDecl namespace="http://xmlns.cencosud.corp/Common/Logging" prefix="ns0"/>
+        </con1:context>
+        <con1:actions xmlns:mq="http://www.bea.com/wli/sb/transports/mq" xmlns:con5="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con4="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con6="http://www.bea.com/wli/sb/stages/routing/config" xmlns:jms="http://www.bea.com/wli/sb/transports/jms">
+          <con2:assign varName="correlationId">
+            <con3:id>_ActionId-7805779870495563923--672ef173.147b22d634c.-79f3</con3:id>
+            <con2:expr>
+              <con3:xqueryText>data($inbound/ctx:transport/ctx:request/tp:headers/tp:user-header[@name = 'correlationId']/@value)</con3:xqueryText>
+            </con2:expr>
+          </con2:assign>
+          <con2:assign varName="bamLog">
+            <con3:id>_ActionId-7805779870495563923--672ef173.147b22d634c.-79ec</con3:id>
+            <con2:expr>
+              <con3:xqueryTransform>
+                <con3:resource ref="Common/Logging/Resources/XQuery/CencosudGlobalBAMLogV2"/>
+                <con3:param name="society">
+                  <con3:path>''</con3:path>
+                </con3:param>
+                <con3:param name="transactionStatus">
+                  <con3:path>'EN CURSO'</con3:path>
+                </con3:param>
+                <con3:param name="requesterTransactionId">
+                  <con3:path>if(fn:exists($ebmHeader/ebm:EBMTracking/ebm:ReferenceID)) then $ebmHeader/ebm:EBMTracking/ebm:ReferenceID/text() else ''</con3:path>
+                </con3:param>
+                <con3:param name="sourceLog">
+                  <con3:path>fn:concat('DSCL_ConsultaTransaccionVenta_INTXXXX/ConsultaVentas/', $serviceName)</con3:path>
+                </con3:param>
+                <con3:param name="targetDateTime">
+                  <con3:path>fn:current-dateTime()</con3:path>
+                </con3:param>
+                <con3:param name="targetSystem">
+                  <con3:path>if(fn:exists($ebmHeader/ebm:Target)) then $ebmHeader/ebm:Target/text() else ''</con3:path>
+                </con3:param>
+                <con3:param name="sourceSystem">
+                  <con3:path>if(fn:exists($ebmHeader/ebm:Sender/ebm:Application)) then $ebmHeader/ebm:Sender/ebm:Application/text() else ''</con3:path>
+                </con3:param>
+                <con3:param name="errorDescription">
+                  <con3:path>''</con3:path>
+                </con3:param>
+                <con3:param name="center">
+                  <con3:path>''</con3:path>
+                </con3:param>
+                <con3:param name="businessProjectDomain">
+                  <con3:path>''</con3:path>
+                </con3:param>
+                <con3:param name="country">
+                  <con3:path>if (fn:exists($ebmHeader/ebm:Sender/ebm:Country)) then $ebmHeader/ebm:Sender/ebm:Country/text() else ''</con3:path>
+                </con3:param>
+                <con3:param name="targetObjectName">
+                  <con3:path>'QL_SoporteVenta'</con3:path>
+                </con3:param>
+                <con3:param name="interfaceType">
+                  <con3:path>''</con3:path>
+                </con3:param>
+                <con3:param name="targetObjectType">
+                  <con3:path>'MQQUEUE-MQ'</con3:path>
+                </con3:param>
+                <con3:param name="sourceDateTime">
+                  <con3:path>fn:current-dateTime()</con3:path>
+                </con3:param>
+                <con3:param name="lineNumber">
+                  <con3:path>''</con3:path>
+                </con3:param>
+                <con3:param name="logDateTime">
+                  <con3:path>fn:current-dateTime()</con3:path>
+                </con3:param>
+                <con3:param name="transactionId">
+                  <con3:path>if(fn:exists($ebmHeader/ebm:EBMID)) then $ebmHeader/ebm:EBMID/text() else ''</con3:path>
+                </con3:param>
+                <con3:param name="sourceObjectName">
+                  <con3:path>'ConsultaTransaccionVenta'</con3:path>
+                </con3:param>
+                <con3:param name="sourceObjectType">
+                  <con3:path>'PS'</con3:path>
+                </con3:param>
+                <con3:param name="errorCode">
+                  <con3:path>''</con3:path>
+                </con3:param>
+                <con3:param name="serviceName">
+                  <con3:path>$serviceName</con3:path>
+                </con3:param>
+                <con3:param name="interfaceId">
+                  <con3:path>if(fn:exists($ebmHeader/ebm:EBMTracking/ebm:IntegrationCode)) then $ebmHeader/ebm:EBMTracking/ebm:IntegrationCode/text() else ''</con3:path>
+                </con3:param>
+                <con3:param name="businessUnit">
+                  <con3:path>if(fn:exists($ebmHeader/ebm:Sender/ebm:BusinessUnit)) then $ebmHeader/ebm:Sender/ebm:BusinessUnit/text() else ''</con3:path>
+                </con3:param>
+              </con3:xqueryTransform>
+            </con2:expr>
+          </con2:assign>
+          <con4:route>
+            <con3:id>_ActionId-7805779870495563923--672ef173.147b22d634c.-79f1</con3:id>
+            <con4:service ref="Common/Logging/Proxy Services/LogIntoBAM" xsi:type="ref:ProxyRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+            <con4:outboundTransform>
+              <con7:replace varName="body" contents-only="true" xmlns:con7="http://www.bea.com/wli/sb/stages/transform/config">
+                <con3:id>_ActionId-7805779870495563923--672ef173.147b22d634c.-79f0</con3:id>
+                <con7:location>
+                  <con3:xpathText>.</con3:xpathText>
+                </con7:location>
+                <con7:expr>
+                  <con3:xqueryText>$bamLog</con3:xqueryText>
+                </con7:expr>
+              </con7:replace>
+            </con4:outboundTransform>
+          </con4:route>
+        </con1:actions>
+      </con1:stage>
+      <con1:stage name="XML TransformOUT">
+        <con1:context xmlns:con5="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con4="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con6="http://www.bea.com/wli/sb/stages/routing/config" xmlns:jms="http://www.bea.com/wli/sb/transports/jms">
+          <con3:varNsDecl namespace="http://www.example.org/PurchaseOrderInputMessageEBM" prefix="pur"/>
+          <con3:varNsDecl namespace="http://www.example.org/PurchaseOrderInputMessage" prefix="pur1"/>
+          <con3:varNsDecl namespace="http://www.example.org/PurchaseOrderStatusInputMessageEBM" prefix="pur2"/>
+        </con1:context>
+        <con1:actions xmlns:con5="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con4="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con6="http://www.bea.com/wli/sb/stages/routing/config" xmlns:jms="http://www.bea.com/wli/sb/transports/jms">
+          <con2:replace varName="body" contents-only="true">
+            <con3:id>_ActionId-7805779870495563923--672ef173.147b22d634c.-79ca</con3:id>
+            <con2:expr>
+              <con3:xqueryText>$responsePX</con3:xqueryText>
+            </con2:expr>
+          </con2:replace>
+          <con5:log>
+            <con3:id>_ActionId-7805779870495563923--672ef173.147b22d634c.-79e2</con3:id>
+            <con5:logLevel>info</con5:logLevel>
+            <con5:expr>
+              <con3:xqueryText>$body</con3:xqueryText>
+            </con5:expr>
+            <con5:message/>
+          </con5:log>
+        </con1:actions>
+      </con1:stage>
+    </con1:pipeline>
+    <con1:pipeline type="error" name="_onErrorHandler-7805779870495563923--672ef173.147b22d634c.-7978">
+      <con1:stage name="Handle Error1">
+        <con1:context xmlns:con5="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con4="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con6="http://www.bea.com/wli/sb/stages/routing/config" xmlns:jms="http://www.bea.com/wli/sb/transports/jms">
+          <con3:userNsDecl namespace="http://xmlns.cencosud.corp/Core/EBM/Common/EBM" prefix="ebm"/>
+          <con3:userNsDecl namespace="http://xmlns.cencosud.corp/Common/Logging" prefix="ns0"/>
+        </con1:context>
+        <con1:actions xmlns:con5="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con4="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con6="http://www.bea.com/wli/sb/stages/routing/config" xmlns:jms="http://www.bea.com/wli/sb/transports/jms">
+          <con5:log>
+            <con3:id>_ActionId-7805779870495563923--672ef173.147b22d634c.-792d</con3:id>
+            <con5:logLevel>error</con5:logLevel>
+            <con5:expr>
+              <con3:xqueryText>$fault</con3:xqueryText>
+            </con5:expr>
+            <con5:message/>
+          </con5:log>
+          <con2:assign varName="errorMessage">
+            <con3:id>_ActionId-7805779870495563923--672ef173.147b22d634c.-792c</con3:id>
+            <con2:expr>
+              <con3:xqueryTransform>
+                <con3:resource ref="Common/ErrorHandling/Resources/XQuery/ErrorHospital"/>
+                <con3:param name="eBMHeader1">
+                  <con3:path>$ebmHeader</con3:path>
+                </con3:param>
+                <con3:param name="fault">
+                  <con3:path>$faut</con3:path>
+                </con3:param>
+                <con3:param name="errorHospitalContext1">
+                  <con3:path>$context</con3:path>
+                </con3:param>
+              </con3:xqueryTransform>
+            </con2:expr>
+          </con2:assign>
+          <con2:assign varName="errorCode">
+            <con3:id>_ActionId-7805779870495563923--672ef173.147b22d634c.-792b</con3:id>
+            <con2:expr>
+              <con3:xqueryText>data($fault/ctx:errorCode)</con3:xqueryText>
+            </con2:expr>
+          </con2:assign>
+          <con2:wsCallout>
+            <con3:id>_ActionId-7805779870495563923--672ef173.147b22d634c.-792a</con3:id>
+            <con2:service xsi:type="ref:ProxyRef" ref="Common/ErrorHandling/Proxy Services/ErrorFormatterPS" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+            <con2:request>
+              <con2:payload>$errorRequest</con2:payload>
+            </con2:request>
+            <con2:response>
+              <con2:payload>errorResponse</con2:payload>
+            </con2:response>
+            <con2:requestTransform/>
+            <con2:responseTransform/>
+          </con2:wsCallout>
+          <con4:route>
+            <con3:id>_ActionId-7805779870495563923--672ef173.147b22d634c.-7929</con3:id>
+            <con4:service ref="Common/Logging/Proxy Services/LogIntoBAM" xsi:type="ref:ProxyRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+            <con4:outboundTransform>
+              <con2:replace varName="body" contents-only="true">
+                <con3:id>_ActionId-7805779870495563923--672ef173.147b22d634c.-7928</con3:id>
+                <con2:location>
+                  <con3:xpathText>.</con3:xpathText>
+                </con2:location>
+                <con2:expr>
+                  <con3:xqueryText>$bamLog</con3:xqueryText>
+                </con2:expr>
+              </con2:replace>
+              <con2:replace varName="body" contents-only="true">
+                <con3:id>_ActionId-7805779870495563923--672ef173.147b22d634c.-7927</con3:id>
+                <con2:location>
+                  <con3:xpathText>./ns0:CencosudGlobalBAMLog/ns0:errorDescription</con3:xpathText>
+                </con2:location>
+                <con2:expr>
+                  <con3:xqueryText>data($errorResponse/ebm:ReturnMessage)</con3:xqueryText>
+                </con2:expr>
+              </con2:replace>
+              <con2:replace varName="body" contents-only="true">
+                <con3:id>_ActionId-7805779870495563923--672ef173.147b22d634c.-7926</con3:id>
+                <con2:location>
+                  <con3:xpathText>./ns0:CencosudGlobalBAMLog/ns0:errorCode</con3:xpathText>
+                </con2:location>
+                <con2:expr>
+                  <con3:xqueryText>data($errorResponse/ebm:ErrorCode)</con3:xqueryText>
+                </con2:expr>
+              </con2:replace>
+              <con2:replace varName="body" contents-only="true">
+                <con3:id>_ActionId-7805779870495563923--672ef173.147b22d634c.-7925</con3:id>
+                <con2:location>
+                  <con3:xpathText>./ns0:CencosudGlobalBAMLog/ns0:transactionStatus</con3:xpathText>
+                </con2:location>
+                <con2:expr>
+                  <con3:xqueryText>'ERROR'</con3:xqueryText>
+                </con2:expr>
+              </con2:replace>
+            </con4:outboundTransform>
+          </con4:route>
+          <con3:reply>
+            <con3:id>_ActionId-7805779870495563923--672ef173.147b22d634c.-7924</con3:id>
+          </con3:reply>
+        </con1:actions>
+      </con1:stage>
+    </con1:pipeline>
+    <con1:flow>
+      <con1:pipeline-node name="ConsultarTransaccionVenta">
+        <con1:request>ConsultarTransaccionVenta_request</con1:request>
+        <con1:response>ConsultarTransaccionVenta_response</con1:response>
+      </con1:pipeline-node>
+    </con1:flow>
+  </ser:router>
+</xml-fragment>
