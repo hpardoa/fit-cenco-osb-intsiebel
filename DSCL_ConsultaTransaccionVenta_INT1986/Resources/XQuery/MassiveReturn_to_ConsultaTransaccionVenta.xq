@@ -21,23 +21,23 @@ declare function xf:MassiveReturn_to_ConsultaTransaccionVenta1($massiveReturn1 a
                         <ns0:MassiveReturn>
                             <ns0:CNStoreID>{ data($RespuestMasiva/Local) }</ns0:CNStoreID>
                             <ns0:CNPOS>{ data($RespuestMasiva/Terminal) }</ns0:CNPOS>
-                            <ns0:CNTransactioninteger>{ data($RespuestMasiva/NumeroTransaccion) }</ns0:CNTransactioninteger>
+                            <ns0:CNTransactionNumber>{ data($RespuestMasiva/NumeroTransaccion) }</ns0:CNTransactionNumber>
                             <ns0:CNTransactiondate>{ concat(substring($RespuestMasiva/FechaVenta,7,2),
 	'-',
 	substring($RespuestMasiva/FechaVenta,5,2),
 	'-',
 	substring($RespuestMasiva/FechaVenta,1,4)) }</ns0:CNTransactiondate>
-                            <ns0:CNcorrelativeinteger>{ data($RespuestMasiva/NumeroCorrelativo) }</ns0:CNcorrelativeinteger>
+                            <ns0:CNcorrelativeNumber>{ data($RespuestMasiva/NumeroCorrelativo) }</ns0:CNcorrelativeNumber>
                             <ns0:CNTransactionType>{ data($RespuestMasiva/TipoTransaccion) }</ns0:CNTransactionType>
-                            <ns0:CNAccountinteger>{ data($RespuestMasiva/NumeroCuenta) }</ns0:CNAccountinteger>
-                            <ns0:CNRequestinteger>{ data($RespuestMasiva/NumeroSolicitud) }</ns0:CNRequestinteger>
+                            <ns0:CNAccountNumber>{ data($RespuestMasiva/NumeroCuenta) }</ns0:CNAccountNumber>
+                            <ns0:CNRequestNumber>{ data($RespuestMasiva/NumeroSolicitud) }</ns0:CNRequestNumber>
                             <ns0:CNTypeofRequest>{ data($RespuestMasiva/TypoSolicitud) }</ns0:CNTypeofRequest>
                             <ns0:CNCompany>{ data($RespuestMasiva/Empresa) }</ns0:CNCompany>
-                            <ns0:CNDocumentinteger>{ data($RespuestMasiva/NumeroDocumento) }</ns0:CNDocumentinteger>
-                            <ns0:CNVendorRutId>{ data($RespuestMasiva/Rut) }</ns0:CNVendorRutId>
-                            <ns0:CNDV>{ data($RespuestMasiva/Dv) }</ns0:CNDV>
-                            <ns0:CNVendorName>{ data($RespuestMasiva/Nombre) }</ns0:CNVendorName>
-                            <ns0:CNVendorAddress>{ data($RespuestMasiva/Direccion) }</ns0:CNVendorAddress>
+                            <ns0:CNDocumentNumber>{ data($RespuestMasiva/NumeroDocumento) }</ns0:CNDocumentNumber>
+                            <ns0:CNCustomerDocumentId>{ data($RespuestMasiva/Rut) }</ns0:CNCustomerDocumentId>
+                            <ns0:CNCustomerVerificationDigit>{ data($RespuestMasiva/Dv) }</ns0:CNCustomerVerificationDigit>
+                            <ns0:CNCustomerName>{ data($RespuestMasiva/Nombre) }</ns0:CNCustomerName>
+                            <ns0:CNCustomerAddress>{ data($RespuestMasiva/Direccion) }</ns0:CNCustomerAddress>
                             <ns0:CNInvoiceMark>{ data($RespuestMasiva/MarcaFactura) }</ns0:CNInvoiceMark>
                             <ns0:CNNoviosCode>{ data($RespuestMasiva/CodNovios) }</ns0:CNNoviosCode>
                         </ns0:MassiveReturn>
