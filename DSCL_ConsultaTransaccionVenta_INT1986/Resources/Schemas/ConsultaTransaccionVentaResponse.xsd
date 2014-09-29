@@ -19,19 +19,19 @@ xmlns:xsd="http://www.w3.org/2001/XMLSchema">
          <xsd:sequence>
 			<xsd:element name="CNStoreID" type="xsd:string"  minOccurs="0" maxOccurs="1" />
 			<xsd:element name="CNPOS" type="xsd:integer"  minOccurs="0" maxOccurs="1" />
-			<xsd:element name="CNTransactioninteger" type="xsd:integer"  minOccurs="0" maxOccurs="1" />
+			<xsd:element name="CNTransactionNumber" type="xsd:integer"  minOccurs="0" maxOccurs="1" />
 			<xsd:element name="CNTransactiondate" type="xsd:date"  minOccurs="0" maxOccurs="1" />
-			<xsd:element name="CNcorrelativeinteger" type="xsd:integer"  minOccurs="0" maxOccurs="1" />
+			<xsd:element name="CNcorrelativeNumber" type="xsd:integer"  minOccurs="0" maxOccurs="1" />
 			<xsd:element name="CNTransactionType" type="xsd:string"  minOccurs="0" maxOccurs="1" />
-			<xsd:element name="CNAccountinteger" type="xsd:integer"  minOccurs="0" maxOccurs="1" />
-			<xsd:element name="CNRequestinteger" type="xsd:integer"  minOccurs="0" maxOccurs="1" />
+			<xsd:element name="CNAccountNumber" type="xsd:integer"  minOccurs="0" maxOccurs="1" />
+			<xsd:element name="CNRequestNumber" type="xsd:integer"  minOccurs="0" maxOccurs="1" />
 			<xsd:element name="CNTypeofRequest" type="xsd:string"  minOccurs="0" maxOccurs="1" />
 			<xsd:element name="CNCompany" type="xsd:integer"  minOccurs="0" maxOccurs="1" />
-			<xsd:element name="CNDocumentinteger" type="xsd:integer"  minOccurs="0" maxOccurs="1" />
-			<xsd:element name="CNVendorRutId" type="xsd:integer"  minOccurs="0" maxOccurs="1" />
-			<xsd:element name="CNDV" type="xsd:string"  minOccurs="0" maxOccurs="1" />
-			<xsd:element name="CNVendorName" type="xsd:string"  minOccurs="0" maxOccurs="1" />
-			<xsd:element name="CNVendorAddress" type="xsd:string"  minOccurs="0" maxOccurs="1" />
+			<xsd:element name="CNDocumentNumber" type="xsd:integer"  minOccurs="0" maxOccurs="1" />
+			<xsd:element name="CNCustomerDocumentId" type="xsd:integer"  minOccurs="0" maxOccurs="1" />
+			<xsd:element name="CNCustomerVerificationDigit" type="xsd:string"  minOccurs="0" maxOccurs="1" />
+			<xsd:element name="CNCustomerName" type="xsd:string"  minOccurs="0" maxOccurs="1" />
+			<xsd:element name="CNCustomerAddress" type="xsd:string"  minOccurs="0" maxOccurs="1" />
 			<xsd:element name="CNInvoiceMark" type="xsd:string"  minOccurs="0" maxOccurs="1" />
 			<xsd:element name="CNNoviosCode" type="xsd:string"  minOccurs="0" maxOccurs="1" />
        </xsd:sequence>
@@ -41,19 +41,19 @@ xmlns:xsd="http://www.w3.org/2001/XMLSchema">
         <xsd:sequence>
 			<xsd:element name="CNStoreID1" type="xsd:string"  minOccurs="0" maxOccurs="1" />
 			<xsd:element name="CNPOS1" type="xsd:integer"  minOccurs="0" maxOccurs="1" />
-			<xsd:element name="CNTransactioninteger1" type="xsd:integer"  minOccurs="0" maxOccurs="1" />
+			<xsd:element name="CNTransactionNumber1" type="xsd:integer"  minOccurs="0" maxOccurs="1" />
 			<xsd:element name="CNTransactiondate1" type="xsd:date"  minOccurs="0" maxOccurs="1" />
-			<xsd:element name="CNcorrelativeinteger1" type="xsd:integer"  minOccurs="0" maxOccurs="1" />
+			<xsd:element name="CNcorrelativeNumber1" type="xsd:integer"  minOccurs="0" maxOccurs="1" />
 			<xsd:element name="CNTransactionType1" type="xsd:string"  minOccurs="0" maxOccurs="1" />
-			<xsd:element name="CNAccountinteger1" type="xsd:integer"  minOccurs="0" maxOccurs="1" />
-			<xsd:element name="CNRequestinteger1" type="xsd:integer"  minOccurs="0" maxOccurs="1" />
+			<xsd:element name="CNAccountNumber1" type="xsd:integer"  minOccurs="0" maxOccurs="1" />
+			<xsd:element name="CNRequestNumber1" type="xsd:integer"  minOccurs="0" maxOccurs="1" />
 			<xsd:element name="CNTypeofRequest1" type="xsd:integer"  minOccurs="0" maxOccurs="1" />
 			<xsd:element name="CNCompany1" type="xsd:integer"  minOccurs="0" maxOccurs="1" />
-			<xsd:element name="CNDocumentinteger1" type="xsd:integer"  minOccurs="0" maxOccurs="1" />
-			<xsd:element name="CNVendorRutId1" type="xsd:integer"  minOccurs="0" maxOccurs="1" />
-			<xsd:element name="CNDV1" type="xsd:string"  minOccurs="0" maxOccurs="1" />
-			<xsd:element name="CNVendorName1" type="xsd:string"  minOccurs="0" maxOccurs="1" />
-			<xsd:element name="CNVendorAddress1" type="xsd:string"  minOccurs="0" maxOccurs="1" />
+			<xsd:element name="CNDocumentNumber1" type="xsd:integer"  minOccurs="0" maxOccurs="1" />
+			<xsd:element name="CNCustomerDocumentId1" type="xsd:integer"  minOccurs="0" maxOccurs="1" />
+			<xsd:element name="CNCustomerVerificationDigit1" type="xsd:string"  minOccurs="0" maxOccurs="1" />
+			<xsd:element name="CNCustomerName1" type="xsd:string"  minOccurs="0" maxOccurs="1" />
+			<xsd:element name="CNCustomerAddress1" type="xsd:string"  minOccurs="0" maxOccurs="1" />
 			<xsd:element name="CNInvoiceMark1" type="xsd:string"  minOccurs="0" maxOccurs="1" />
 			<xsd:element name="CNNoviosCode1" type="xsd:string"  minOccurs="0" maxOccurs="1" />
 			<xsd:element name="CNPaymentOcurrences" type="xsd:integer"  minOccurs="0" maxOccurs="1" />

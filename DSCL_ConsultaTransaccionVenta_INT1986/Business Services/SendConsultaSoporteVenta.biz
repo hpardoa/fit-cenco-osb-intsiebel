@@ -40,7 +40,7 @@
         <mq:auto-gen-correlation-value>true</mq:auto-gen-correlation-value>
         <mq:response-pooling>false</mq:response-pooling>
         <mq:response-URI>mq://QL_OSB_SV_1986_RESP?conn=DSCL_ConsultaTransaccionVenta_INT1986/Resources/MQConfigurations/QM_SVRESP</mq:response-URI>
-        <mq:response-timeout>20</mq:response-timeout>
+        <mq:response-timeout>30</mq:response-timeout>
         <mq:response-pattern>MQCorrelationID</mq:response-pattern>
         <mq:pollingInterval>1000</mq:pollingInterval>
         <mq:endpoint-URI-PUT-options/>
