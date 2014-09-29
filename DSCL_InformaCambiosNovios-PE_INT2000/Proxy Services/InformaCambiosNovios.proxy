@@ -42,7 +42,7 @@
   </ser:endpointConfig>
   <ser:router errorHandler="_onErrorHandler-6046281650881722541--588077ef.1489e836a0c.-7d02">
     <con:pipeline type="request" name="PipelinePairNode1_request" xmlns:con="http://www.bea.com/wli/sb/pipeline/config">
-      <con:stage name="Initialize Variables">
+      <con:stage name="Initialize Variables" errorHandler="_onErrorHandler-52089735149450567-12f715e1.148c21bc6f6.-7efc">
         <con:context>
           <con1:varNsDecl namespace="http://xmlns.cencosud.corp/CENCOSUD/Siebel/SDV/Resources/WSDL/SDV/ConsultaTransVentas/" prefix="con" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
           <con1:varNsDecl namespace="http://xmlns.cencosud.corp/ConsultaTransaccionVentaRequest" prefix="con1" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
@@ -95,7 +95,7 @@
           </con4:assign>
         </con:actions>
       </con:stage>
-      <con:stage name="XML Transform">
+      <con:stage name="XML Transform" errorHandler="_onErrorHandler-52089735149450567-12f715e1.148c21bc6f6.-7e8c">
         <con1:context xmlns:con5="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con4="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con6="http://www.bea.com/wli/sb/stages/routing/config" xmlns:jms="http://www.bea.com/wli/sb/transports/jms" xmlns:con3="http://www.bea.com/wli/sb/stages/config" xmlns:con2="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con1="http://www.bea.com/wli/sb/pipeline/config">
           <con3:varNsDecl namespace="http://www.example.org/PurchaseOrderInputMessageEBM" prefix="pur"/>
           <con3:varNsDecl namespace="http://www.example.org/PurchaseOrderInputMessage" prefix="pur1"/>
@@ -129,7 +129,7 @@
           </con5:log>
         </con1:actions>
       </con:stage>
-      <con:stage name="RouteBs1">
+      <con:stage name="RouteBs" errorHandler="_onErrorHandler-52089735149450567-12f715e1.148c21bc6f6.-7e1c">
         <con1:context xmlns:con3="http://www.bea.com/wli/sb/stages/config" xmlns:con2="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con1="http://www.bea.com/wli/sb/pipeline/config"/>
         <con1:actions xmlns:con3="http://www.bea.com/wli/sb/stages/config" xmlns:con2="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con1="http://www.bea.com/wli/sb/pipeline/config">
           <con4:wsCallout xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config">
@@ -156,7 +156,7 @@
       </con:stage>
     </con:pipeline>
     <con:pipeline type="response" name="PipelinePairNode1_response" xmlns:con="http://www.bea.com/wli/sb/pipeline/config">
-      <con:stage name="TransformMFL">
+      <con:stage name="TransformMFL" errorHandler="_onErrorHandler-52089735149450567-12f715e1.148c21bc6f6.-7dac">
         <con:context/>
         <con:actions>
           <con1:mflTransform>
@@ -181,7 +181,7 @@
           </con1:assign>
         </con:actions>
       </con:stage>
-      <con:stage name="TrasnformXMLOut">
+      <con:stage name="TrasnformXMLOut" errorHandler="_onErrorHandler-52089735149450567-12f715e1.148c21bc6f6.-7d3c">
         <con:context/>
         <con:actions>
           <con1:replace contents-only="true" varName="body">
@@ -246,6 +246,66 @@
           <con3:reply>
             <con3:id>_ActionId-6659140192730478368-24cd095c.148a2bbea38.-77a7</con3:id>
           </con3:reply>
+        </con2:actions>
+      </con2:stage>
+    </con2:pipeline>
+    <con2:pipeline type="error" name="_onErrorHandler-52089735149450567-12f715e1.148c21bc6f6.-7efc">
+      <con2:stage name="XMLTransformError">
+        <con2:context xmlns:con3="http://www.bea.com/wli/sb/stages/config" xmlns:con4="http://www.bea.com/wli/sb/stages/logging/config"/>
+        <con2:actions xmlns:con3="http://www.bea.com/wli/sb/stages/config" xmlns:con4="http://www.bea.com/wli/sb/stages/logging/config">
+          <con1:Error>
+            <con3:id>_ActionId-52089735149450567-12f715e1.148c21bc6f6.-7ec4</con3:id>
+            <con1:errCode>SOA-'000-2009</con1:errCode>
+            <con1:message>Falla Transformación Request Informa Cambios Novios</con1:message>
+          </con1:Error>
+        </con2:actions>
+      </con2:stage>
+    </con2:pipeline>
+    <con2:pipeline type="error" name="_onErrorHandler-52089735149450567-12f715e1.148c21bc6f6.-7e8c">
+      <con2:stage name="XMLTransformError">
+        <con2:context xmlns:con3="http://www.bea.com/wli/sb/stages/config" xmlns:con4="http://www.bea.com/wli/sb/stages/logging/config"/>
+        <con2:actions xmlns:con3="http://www.bea.com/wli/sb/stages/config" xmlns:con4="http://www.bea.com/wli/sb/stages/logging/config">
+          <con1:Error>
+            <con3:id>_ActionId-52089735149450567-12f715e1.148c21bc6f6.-7e54</con3:id>
+            <con1:errCode>SOA-'000-2009</con1:errCode>
+            <con1:message>Falla Transformación Request Informa Cambios Novios</con1:message>
+          </con1:Error>
+        </con2:actions>
+      </con2:stage>
+    </con2:pipeline>
+    <con2:pipeline type="error" name="_onErrorHandler-52089735149450567-12f715e1.148c21bc6f6.-7e1c">
+      <con2:stage name="ConectionError">
+        <con2:context xmlns:con3="http://www.bea.com/wli/sb/stages/config" xmlns:con4="http://www.bea.com/wli/sb/stages/logging/config"/>
+        <con2:actions xmlns:con3="http://www.bea.com/wli/sb/stages/config" xmlns:con4="http://www.bea.com/wli/sb/stages/logging/config">
+          <con1:Error>
+            <con3:id>_ActionId-52089735149450567-12f715e1.148c21bc6f6.-7de4</con3:id>
+            <con1:errCode>SOA-'000-1001</con1:errCode>
+            <con1:message>Error Conexión Informa Cambio Novios</con1:message>
+          </con1:Error>
+        </con2:actions>
+      </con2:stage>
+    </con2:pipeline>
+    <con2:pipeline type="error" name="_onErrorHandler-52089735149450567-12f715e1.148c21bc6f6.-7dac">
+      <con2:stage name="XMLTransformErrorMFL">
+        <con2:context xmlns:con3="http://www.bea.com/wli/sb/stages/config" xmlns:con4="http://www.bea.com/wli/sb/stages/logging/config"/>
+        <con2:actions xmlns:con3="http://www.bea.com/wli/sb/stages/config" xmlns:con4="http://www.bea.com/wli/sb/stages/logging/config">
+          <con1:Error>
+            <con3:id>_ActionId-52089735149450567-12f715e1.148c21bc6f6.-7d74</con3:id>
+            <con1:errCode>SOA-'000-2005</con1:errCode>
+            <con1:message>Falla Transformación MFL Response</con1:message>
+          </con1:Error>
+        </con2:actions>
+      </con2:stage>
+    </con2:pipeline>
+    <con2:pipeline type="error" name="_onErrorHandler-52089735149450567-12f715e1.148c21bc6f6.-7d3c">
+      <con2:stage name="XMLTransformErrorResp">
+        <con2:context xmlns:con3="http://www.bea.com/wli/sb/stages/config" xmlns:con4="http://www.bea.com/wli/sb/stages/logging/config"/>
+        <con2:actions xmlns:con3="http://www.bea.com/wli/sb/stages/config" xmlns:con4="http://www.bea.com/wli/sb/stages/logging/config">
+          <con1:Error>
+            <con3:id>_ActionId-52089735149450567-12f715e1.148c21bc6f6.-7d04</con3:id>
+            <con1:errCode>SOA-'000-2009</con1:errCode>
+            <con1:message>Falla Transformación Response Informa Cambio Novios</con1:message>
+          </con1:Error>
         </con2:actions>
       </con2:stage>
     </con2:pipeline>
