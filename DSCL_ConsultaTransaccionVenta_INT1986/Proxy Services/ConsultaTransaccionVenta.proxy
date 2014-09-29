@@ -343,7 +343,7 @@
           <con2:Error>
             <con3:id>_ActionId-7005403477396738328--5b92ee0f.148a8422d45.-7da4</con3:id>
             <con2:errCode>SOA-'000-2009</con2:errCode>
-            <con2:message>Falla Transformación Response</con2:message>
+            <con2:message>Fallo en Transformación Response</con2:message>
           </con2:Error>
         </con1:actions>
       </con1:stage>
@@ -355,7 +355,7 @@
           <con2:Error>
             <con3:id>_ActionId-7005403477396738328--5b92ee0f.148a8422d45.-7d6a</con3:id>
             <con2:errCode>SOA-'000-2005</con2:errCode>
-            <con2:message>Falla Transformación MFL Response</con2:message>
+            <con2:message>Fallo en Transformación MFL Response</con2:message>
           </con2:Error>
         </con1:actions>
       </con1:stage>
@@ -367,7 +367,7 @@
           <con2:Error>
             <con3:id>_ActionId-7005403477396738328--5b92ee0f.148a8422d45.-7d31</con3:id>
             <con2:errCode>SOA-'000-2009</con2:errCode>
-            <con2:message>Falla Transformación Response</con2:message>
+            <con2:message>Fallo en Transformación Response</con2:message>
           </con2:Error>
         </con1:actions>
       </con1:stage>
@@ -384,62 +384,7 @@
         </con1:actions>
       </con1:stage>
     </con1:pipeline>
-    <con1:pipeline type="error" name="_onErrorHandler-7005403477396738328--5b92ee0f.148a8422d45.-7c2e">
-      <con1:stage name="Handle Error11">
-        <con1:context xmlns:con5="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con4="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con6="http://www.bea.com/wli/sb/stages/routing/config" xmlns:jms="http://www.bea.com/wli/sb/transports/jms">
-          <con3:userNsDecl namespace="http://xmlns.cencosud.corp/Core/EBM/Common/EBM" prefix="ebm"/>
-          <con3:userNsDecl namespace="http://xmlns.cencosud.corp/Common/Logging" prefix="ns0"/>
-        </con1:context>
-        <con1:actions xmlns:con5="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con4="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con6="http://www.bea.com/wli/sb/stages/routing/config" xmlns:jms="http://www.bea.com/wli/sb/transports/jms">
-          <con7:log xmlns:con7="http://www.bea.com/wli/sb/stages/logging/config">
-            <con3:id>_ActionId-7005403477396738328--5b92ee0f.148a8422d45.-7bed</con3:id>
-            <con7:logLevel>error</con7:logLevel>
-            <con7:expr>
-              <con3:xqueryText>$fault</con3:xqueryText>
-            </con7:expr>
-            <con7:message/>
-          </con7:log>
-          <con2:assign varName="errorMessage">
-            <con3:id>_ActionId-7005403477396738328--5b92ee0f.148a8422d45.-7bec</con3:id>
-            <con2:expr>
-              <con3:xqueryTransform>
-                <con3:resource ref="Common/ErrorHandling/Resources/XQuery/ErrorHospital"/>
-                <con3:param name="eBMHeader1">
-                  <con3:path>$ebmHeader</con3:path>
-                </con3:param>
-                <con3:param name="fault">
-                  <con3:path>$fault</con3:path>
-                </con3:param>
-                <con3:param name="errorHospitalContext1">
-                  <con3:path>$context</con3:path>
-                </con3:param>
-              </con3:xqueryTransform>
-            </con2:expr>
-          </con2:assign>
-          <con2:assign varName="errorCode">
-            <con3:id>_ActionId-7005403477396738328--5b92ee0f.148a8422d45.-7beb</con3:id>
-            <con2:expr>
-              <con3:xqueryText>data($fault/ctx:errorCode)</con3:xqueryText>
-            </con2:expr>
-          </con2:assign>
-          <con2:wsCallout>
-            <con3:id>_ActionId-7005403477396738328--5b92ee0f.148a8422d45.-7bea</con3:id>
-            <con2:service xsi:type="ref:ProxyRef" ref="Common/ErrorHandling/Proxy Services/ErrorFormatterPS" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
-            <con2:request>
-              <con2:payload>$errorRequest</con2:payload>
-            </con2:request>
-            <con2:response>
-              <con2:payload>errorResponse</con2:payload>
-            </con2:response>
-            <con2:requestTransform/>
-            <con2:responseTransform/>
-          </con2:wsCallout>
-          <con3:reply isError="false">
-            <con3:id>_ActionId-7005403477396738328--5b92ee0f.148a8422d45.-7be4</con3:id>
-          </con3:reply>
-        </con1:actions>
-      </con1:stage>
-    </con1:pipeline>
+    <con1:pipeline type="error" name="_onErrorHandler-7005403477396738328--5b92ee0f.148a8422d45.-7c2e"></con1:pipeline>
     <con1:flow>
       <con1:pipeline-node name="ConsultarTransaccionVenta">
         <con1:request>ConsultarTransaccionVenta_request</con1:request>
