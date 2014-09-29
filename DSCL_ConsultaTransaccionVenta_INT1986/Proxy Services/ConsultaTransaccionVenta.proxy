@@ -343,7 +343,7 @@
           <con2:Error>
             <con3:id>_ActionId-7005403477396738328--5b92ee0f.148a8422d45.-7da4</con3:id>
             <con2:errCode>SOA-'000-2009</con2:errCode>
-            <con2:message>Falla Transformación Response</con2:message>
+            <con2:message>Fallo en Transformación Response</con2:message>
           </con2:Error>
         </con1:actions>
       </con1:stage>
@@ -355,7 +355,7 @@
           <con2:Error>
             <con3:id>_ActionId-7005403477396738328--5b92ee0f.148a8422d45.-7d6a</con3:id>
             <con2:errCode>SOA-'000-2005</con2:errCode>
-            <con2:message>Falla Transformación MFL Response</con2:message>
+            <con2:message>Fallo en Transformación MFL Response</con2:message>
           </con2:Error>
         </con1:actions>
       </con1:stage>
@@ -367,7 +367,7 @@
           <con2:Error>
             <con3:id>_ActionId-7005403477396738328--5b92ee0f.148a8422d45.-7d31</con3:id>
             <con2:errCode>SOA-'000-2009</con2:errCode>
-            <con2:message>Falla Transformación Response</con2:message>
+            <con2:message>Fallo en Transformación Response</con2:message>
           </con2:Error>
         </con1:actions>
       </con1:stage>
