@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xml-fragment xmlns:ser="http://www.bea.com/wli/sb/services" xmlns:tran="http://www.bea.com/wli/sb/transports" xmlns:http="http://www.bea.com/wli/sb/transports/http" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:env="http://www.bea.com/wli/config/env" xmlns:mq="http://www.bea.com/wli/sb/transports/mq">
-  <ser:coreEntry isProxy="false" isEnabled="true">
+  <ser:coreEntry isProxy="false" isEnabled="true" isTracingEnabled="false">
     <ser:binding type="Mixed" xsi:type="con:MixedBindingType" xmlns:con="http://www.bea.com/wli/sb/services/bindings/config">
       <con:request type="Text"/>
       <con:response type="Text"/>
@@ -11,6 +11,12 @@
     <ser:sla-alerting isEnabled="true">
       <ser:alertLevel>normal</ser:alertLevel>
     </ser:sla-alerting>
+    <ser:throttling enabled="false">
+      <ser:capacity>0</ser:capacity>
+      <ser:maxQueueLength>0</ser:maxQueueLength>
+      <ser:timeToLive>0</ser:timeToLive>
+    </ser:throttling>
+    <ser:result-caching isSupported="false" isEnabled="true"/>
   </ser:coreEntry>
   <ser:endpointConfig>
     <tran:provider-id>mq</tran:provider-id>
@@ -22,8 +28,11 @@
       <tran:load-balancing-algorithm>round-robin</tran:load-balancing-algorithm>
       <tran:retry-count>0</tran:retry-count>
       <tran:retry-interval>30</tran:retry-interval>
+      <tran:delay-interval-configuration isEnabled="false">
+        <tran:delay-interval>0</tran:delay-interval>
+      </tran:delay-interval-configuration>
     </tran:outbound-properties>
-    <tran:provider-specific>
+    <tran:provider-specific xsi:type="mq:MQEndPointConfiguration">
       <mq:outbound-properties>
         <mq:message-type>Text</mq:message-type>
         <mq:response-required>true</mq:response-required>

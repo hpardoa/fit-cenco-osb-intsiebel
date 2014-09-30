@@ -1,7 +1,4 @@
-<xsd:schema targetNamespace="http://xmlns.cencosud.corp/InformaCambiosNoviosRequest" 
-xmlns:commonebm="http://xmlns.cencosud.corp/Core/EBM/Common/EBM" 
-xmlns="http://xmlns.cencosud.corp/InformaCambiosNoviosRequest" 
-xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<xsd:schema targetNamespace="http://xmlns.cencosud.corp/InformaCambiosNoviosRequest" xmlns:commonebm="http://xmlns.cencosud.corp/Core/EBM/Common/EBM" xmlns="http://xmlns.cencosud.corp/InformaCambiosNoviosRequest" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 
 	<xsd:import namespace="http://xmlns.cencosud.corp/Core/EBM/Common/EBM" schemaLocation="../../../CommonCore/EBM/Common/EBMV2.xsd"/>
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xml-fragment xmlns:ser="http://www.bea.com/wli/sb/services" xmlns:tran="http://www.bea.com/wli/sb/transports" xmlns:env="http://www.bea.com/wli/config/env" xmlns:http="http://www.bea.com/wli/sb/transports/http" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://www.bea.com/wli/sb/stages/config" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con2="http://www.bea.com/wli/sb/pipeline/config">
-  <ser:coreEntry isProxy="true" isEnabled="true">
+  <ser:coreEntry isProxy="true" isEnabled="true" isTracingEnabled="false">
     <ser:description/>
     <ser:binding type="SOAP" isSoap12="false" xsi:type="con1:SoapBindingType" xmlns:con1="http://www.bea.com/wli/sb/services/bindings/config">
       <con1:wsdl ref="DSCL_InformaCambiosNovios-PE_INT2000/Resources/WSDL/InformaCambiosNovios"/>
@@ -208,44 +208,6 @@
             </con7:expr>
             <con7:message/>
           </con7:log>
-          <con1:assign varName="errorMessage">
-            <con3:id>_ActionId-6659140192730478368-24cd095c.148a2bbea38.-77af</con3:id>
-            <con1:expr>
-              <con3:xqueryTransform>
-                <con3:resource ref="Common/ErrorHandling/Resources/XQuery/ErrorHospital"/>
-                <con3:param name="eBMHeader1">
-                  <con3:path>$ebmHeader</con3:path>
-                </con3:param>
-                <con3:param name="fault">
-                  <con3:path>$faut</con3:path>
-                </con3:param>
-                <con3:param name="errorHospitalContext1">
-                  <con3:path>$context</con3:path>
-                </con3:param>
-              </con3:xqueryTransform>
-            </con1:expr>
-          </con1:assign>
-          <con1:assign varName="errorCode">
-            <con3:id>_ActionId-6659140192730478368-24cd095c.148a2bbea38.-77ae</con3:id>
-            <con1:expr>
-              <con3:xqueryText>data($fault/ctx:errorCode)</con3:xqueryText>
-            </con1:expr>
-          </con1:assign>
-          <con1:wsCallout>
-            <con3:id>_ActionId-6659140192730478368-24cd095c.148a2bbea38.-77ad</con3:id>
-            <con1:service xsi:type="ref:ProxyRef" ref="Common/ErrorHandling/Proxy Services/ErrorFormatterPS" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
-            <con1:request>
-              <con1:payload>$errorRequest</con1:payload>
-            </con1:request>
-            <con1:response>
-              <con1:payload>errorResponse</con1:payload>
-            </con1:response>
-            <con1:requestTransform/>
-            <con1:responseTransform/>
-          </con1:wsCallout>
-          <con3:reply>
-            <con3:id>_ActionId-6659140192730478368-24cd095c.148a2bbea38.-77a7</con3:id>
-          </con3:reply>
         </con2:actions>
       </con2:stage>
     </con2:pipeline>
